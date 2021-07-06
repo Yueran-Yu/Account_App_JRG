@@ -1,9 +1,8 @@
+import React from 'react';
 import {Link} from "react-router-dom";
 import styled from "styled-components";
-// TreeShaking is not applicable to 'require'
-require('icons/tags.svg');
-require('icons/dollars.svg');
-require('icons/statistics.svg');
+import {Icon} from './Icon';
+
 
 
 const NavWrapper = styled.nav`
@@ -34,27 +33,20 @@ const Nav = () => {
         <NavWrapper>
             <ul>
                 <li>
-                    <svg className='icon'>
-                        <use xlinkHref='#tags'/>
-                    </svg>
+                    <Icon name='tags'/>
                     <Link to="/tags">Tags</Link>
                 </li>
                 <li>
-                    <svg className='icon'>
-                        <use xlinkHref='#dollars'/>
-                    </svg>
+                    <Icon name='dollars'/>
                     <Link to="/money">Money</Link>
                 </li>
                 <li>
-                    <svg className='icon'>
-                        <use xlinkHref='#statistics'/>
-                    </svg>
+                    <Icon name='statistics'/>
                     <Link to="/statistics">Statistics</Link>
                 </li>
             </ul>
         </NavWrapper>
     )
 }
-
 
 export default Nav;
