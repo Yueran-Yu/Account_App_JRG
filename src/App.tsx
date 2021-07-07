@@ -2,7 +2,7 @@ import React from 'react';
 // hashRouter no need to use the backend server
 import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import Tags from 'pages/Tags';
-import Money from 'pages/Money';
+import AddMoney from 'pages/AddMoney';
 import Statistics from 'pages/Statistics';
 import {NotMatch} from 'pages/NotMatch';
 
@@ -15,7 +15,7 @@ function App() {
                     <Tags/>
                 </Route>
                 <Route path="/money">
-                    <Money/>
+                    <AddMoney/>
                 </Route>
                 <Route path="/statistics">
                     <Statistics/>

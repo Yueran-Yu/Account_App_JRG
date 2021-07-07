@@ -50,8 +50,8 @@ const Nav = () => {
                 </li>
                 <li>
                     <NavLink to="/money" activeClassName='selected'>
-                        <Icon name='dollars'/>
-                        Money
+                        <Icon name='money'/>
+                        Add
                     </NavLink>
                 </li>
                 <li>

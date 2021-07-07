@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from "../components/Layout";
 
-const Money = () => (
+const Income = () => (
     <Layout>
-        <h2>Money</h2>
+        <h2>Income</h2>
     </Layout>)
 
-export default Money;
+export default Income;
