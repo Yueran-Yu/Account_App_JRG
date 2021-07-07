@@ -4,7 +4,6 @@ import styled from "styled-components";
 import {Icon} from './Icon';
 
 
-
 const NavWrapper = styled.nav`
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   line-height: 24px;
@@ -19,6 +18,7 @@ const NavWrapper = styled.nav`
       flex-direction: column;
       align-items: center;
       padding: 4px 0;
+      justify-content: center;
 
       .icon {
         width: 24px;

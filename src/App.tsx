@@ -1,67 +1,32 @@
-import Nav from 'components/Nav';
 import React from 'react';
-import {
-    // hashRouter no need to use the backend server
-    HashRouter as Router,
-    Switch,
-    Route,
-    Redirect
-} from "react-router-dom";
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`
+// hashRouter no need to use the backend server
+import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import Tags from 'pages/Tags';
+import Money from 'pages/Money';
+import Statistics from 'pages/Statistics';
+import {NotMatch} from 'pages/NotMatch';
 
 
 function App() {
     return (
         <Router>
-            <Wrapper>
-                <Main>
-                    <Switch>
-                        <Route path="/tags">
-                            <Tags/>
-                        </Route>
-                        <Route path="/money">
-                            <Money/>
-                        </Route>
-                        <Statistics/>
-                        <Redirect exact from='/' to="/money"/>
-                        <Route path="*">
-                            <NoMatch/>
-                        </Route>
-                    </Switch>
-                </Main>
-                <Nav/>
-            </Wrapper>
+            <Switch>
+                <Route path="/tags">
+                    <Tags/>
+                </Route>
+                <Route path="/money">
+                    <Money/>
+                </Route>
+                <Route path="/statistics">
+                    <Statistics/>
+                </Route>
+                <Redirect exact from='/' to="/money"/>
+                <Route path="*">
+                    <NotMatch/>
+                </Route>
+            </Switch>
         </Router>
     );
-}
-
-function Tags() {
-    return <h2>Home</h2>;
-}
-
-function Money() {
-    return <h2>Money</h2>;
-}
-
-function Statistics() {
-    return <h2>Statistics</h2>;
-}
-
-function NoMatch() {
-    return (
-        <div>Page Not Found.</div>
-    )
 }
 
 export default App;
