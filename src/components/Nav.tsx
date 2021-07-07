@@ -11,18 +11,20 @@ const NavWrapper = styled.nav`
   > ul {
     display: flex;
     justify-content: space-around;
+    text-align: center;
 
     > li {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 4px 0;
-      justify-content: center;
+      > a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 0;
 
-      .icon {
-        width: 24px;
-        height: 24px;
+        .icon {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
   }
@@ -33,16 +35,22 @@ const Nav = () => {
         <NavWrapper>
             <ul>
                 <li>
-                    <Icon name='tags'/>
-                    <Link to="/tags">Tags</Link>
+                    <Link to="/tags">
+                        <Icon name='tags'/>
+                        Tags
+                    </Link>
                 </li>
                 <li>
-                    <Icon name='dollars'/>
-                    <Link to="/money">Money</Link>
+                    <Link to="/money">
+                        <Icon name='dollars'/>
+                        Money
+                    </Link>
                 </li>
                 <li>
-                    <Icon name='statistics'/>
-                    <Link to="/statistics">Statistics</Link>
+                    <Link to="/statistics">
+                        <Icon name='statistics'/>
+                        Statistics
+                    </Link>
                 </li>
             </ul>
         </NavWrapper>
