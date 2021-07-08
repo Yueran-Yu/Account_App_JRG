@@ -5,27 +5,33 @@ import Tags from 'pages/Tags';
 import AddMoney from 'pages/AddMoney';
 import Statistics from 'pages/Statistics';
 import {NotMatch} from 'pages/NotMatch';
+import styled from 'styled-components';
 
+const AppWrapper = styled.div`
+  color: #333;
+`
 
 function App() {
     return (
-        <Router>
-            <Switch>
-                <Route path="/tags">
-                    <Tags/>
-                </Route>
-                <Route path="/money">
-                    <AddMoney/>
-                </Route>
-                <Route path="/statistics">
-                    <Statistics/>
-                </Route>
-                <Redirect exact from='/' to="/money"/>
-                <Route path="*">
-                    <NotMatch/>
-                </Route>
-            </Switch>
-        </Router>
+        <AppWrapper>
+            <Router>
+                <Switch>
+                    <Route path="/tags">
+                        <Tags/>
+                    </Route>
+                    <Route path="/money">
+                        <AddMoney/>
+                    </Route>
+                    <Route path="/statistics">
+                        <Statistics/>
+                    </Route>
+                    <Redirect exact from='/' to="/money"/>
+                    <Route path="*">
+                        <NotMatch/>
+                    </Route>
+                </Switch>
+            </Router>
+        </AppWrapper>
     );
 }
 
