@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 const TagsSection = styled.section`
   background: #ffffff;
-  border: 4px solid red;
+  border: 4px solid #ff0000;
   padding: 12px 16px;
 
   > ol {
@@ -23,20 +23,22 @@ const TagsSection = styled.section`
   > button {
     background: none;
     border: none;
-    padding: 2px 4px;
+    padding: 0 4px;
     border-bottom: 1px solid #333;
     color: #666;
     margin-top: 8px;
   }
-
 `
 const NotesSection = styled.section`
-
+  background: #f5f5f5;
+  padding: 10px 16px;
+  font-size: 14px;
 `
 
 const NewTagButton = styled.button`
 
 `
+
 const CategorySection = styled.section`
 
 `
@@ -92,7 +94,6 @@ const AddMoney = () => (
                 <button>OK</button>
                 <button>0</button>
                 <button>.</button>
-
             </div>
         </NumberPadSection>
     </Layout>)

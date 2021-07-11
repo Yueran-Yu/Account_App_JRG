@@ -3,8 +3,8 @@ import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 import {Icon} from './Icon';
 
-
 const NavWrapper = styled.nav`
+  background: white;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
   line-height: 24px;
 
@@ -12,6 +12,7 @@ const NavWrapper = styled.nav`
     display: flex;
     justify-content: space-around;
     text-align: center;
+
 
     > li {
       > a {
@@ -27,17 +28,16 @@ const NavWrapper = styled.nav`
         }
 
         &.selected {
-          color: #706f6f;
+          color: red;
 
           .icon {
-            fill: #706f6f;
+            fill: red;
           }
         }
       }
     }
   }
 `
-
 const Nav = () => {
     return (
         <NavWrapper>

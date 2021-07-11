@@ -8,7 +8,7 @@ import {NotMatch} from 'pages/NotMatch';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-  color: #333;
+  color: #333333;
 `
 
 function App() {
@@ -36,7 +36,6 @@ function App() {
 }
 
 export default App;
-
 
 /*
 1 确定页面 url
