@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from "../components/Layout";
+import {Icon} from "../components/Icon";
 
 const TagsSection = styled.section`
   background: #ffffff;
@@ -84,11 +85,57 @@ const CategorySection = styled.section`
 `
 
 const NumberPadSection = styled.section`
+  display: flex;
+  flex-direction: column;
 
+  > .output {
+    background: white;
+    font-size: 30px;
+    color: #5a5a5a;
+    line-height: 56px;
+    text-align: right;
+    padding: 0 16px;
+    box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25), inset 0 5px 5px -5px rgba(0, 0, 0, 0.25)
+
+  }
+
+  > .pad {
+    display: flex;
+    flex-wrap: wrap;
+
+    > button {
+      width: 25%;
+      height: 56px;
+      outline: none;
+      border-bottom: 0.5px solid #e2e2e2;
+      border-top: none;
+      border-right: 0.5px solid #e2e2e2;
+      border-left: none;
+
+      font-size: 1.5rem;
+      color: #888888;
+
+      .icon {
+        font-size: 1.2rem;
+        fill: #888888;
+      }
+
+      &.ok {
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+      }
+    }
+  }
 `
-
 const AddMoney = () => (
     <Layout>
+        <CategorySection>
+            <ul>
+                <li className='selected'>Expense</li>
+                <li>Income</li>
+            </ul>
+        </CategorySection>
         <TagsSection className='tags'>
             <ol>
                 {/*
@@ -107,33 +154,32 @@ const AddMoney = () => (
                 <span>Notes</span>
                 <input type="text" placeholder='Add notes here'/>
             </label>
+            <div>Date</div>
         </NotesSection>
-        <CategorySection>
-            <ul>
-                <li className='selected'>Expense</li>
-                <li>Income</li>
-            </ul>
-        </CategorySection>
         <NumberPadSection>
-            <div>
+            <div className='output'>
                 100
             </div>
-            <div>
+            <div className='pad clearfix'>
                 {/* button{$}*16 */}
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
-                <button>Delete</button>
+                <button>
+                    <Icon name='delete'/>
+                </button>
                 <button>4</button>
                 <button>5</button>
                 <button>6</button>
-                <button>Clear</button>
+                <button>+</button>
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button>OK</button>
+                <button>-</button>
+                <button>C</button>
                 <button>0</button>
                 <button>.</button>
+                <button className='ok'>OK</button>
             </div>
         </NumberPadSection>
     </Layout>)
