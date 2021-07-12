@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import Layout from "../components/Layout";
 import {Icon} from "../components/Icon";
 
+
 const TagsSection = styled.section`
   background: #ffffff;
   padding: 12px 16px;
+  flex-grow: 1;
 
   > ol {
     margin: 0 -12px;
@@ -52,43 +54,8 @@ const NotesSection = styled.section`
     }
   }
 `
-
-const NewTagButton = styled.button`
-
-`
-
-const CategorySection = styled.section`
-  font-size: 24px;
-
-  > ul {
-    display: flex;
-    background: #c4c4c4;
-
-    > li {
-      width: 50%;
-      text-align: center;
-      padding: 16px 0;
-      position: relative;
-
-      &.selected::after {
-        content: ' ';
-        display: block;
-        height: 3px;
-        background: #333;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        left: 0;
-      }
-    }
-  }
-`
-
-const NumberPadSection = styled.section`
-  display: flex;
-  flex-direction: column;
-
-  > .output {
+const OutputSection = styled.section`
+  .output {
     background: white;
     font-size: 30px;
     color: #5a5a5a;
@@ -96,10 +63,42 @@ const NumberPadSection = styled.section`
     text-align: right;
     padding: 0 16px;
     box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25), inset 0 5px 5px -5px rgba(0, 0, 0, 0.25)
-
   }
+`
+const CategorySection = styled.section`
+  font-size: 14px;
+  margin: 10px 0;
 
-  > .pad {
+  > ul {
+    display: flex;
+    justify-content: center;
+    line-height: 8px;
+
+    > li {
+      border: 1px solid #5678de;
+      width: 20%;
+      text-align: center;
+      padding: 10px 0;
+      color: #5678de;
+
+      &.left {
+        border-radius: 5px 0 0 5px;
+      }
+
+      &.right {
+        border-radius: 0 5px 5px 0;
+      }
+
+
+      &.selected {
+        background: #5678de;
+        color: white;
+      }
+    }
+  }
+`
+const NumberPadSection = styled.section`
+  .pad {
     display: flex;
     flex-wrap: wrap;
 
@@ -111,7 +110,6 @@ const NumberPadSection = styled.section`
       border-top: none;
       border-right: 0.5px solid #e2e2e2;
       border-left: none;
-
       font-size: 1.5rem;
       color: #888888;
 
@@ -121,21 +119,31 @@ const NumberPadSection = styled.section`
       }
 
       &.ok {
-        background-color: dodgerblue;
+        background-color: #5678de;
         color: white;
         border: none;
       }
     }
   }
 `
+
+const MyLayout = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+`
 const AddMoney = () => (
-    <Layout>
+    <MyLayout>
         <CategorySection>
             <ul>
-                <li className='selected'>Expense</li>
-                <li>Income</li>
+                <li className='left'>Expense</li>
+                <li className='selected right'>Income</li>
             </ul>
         </CategorySection>
+        <OutputSection>
+            <div className='output'>
+                100
+            </div>
+        </OutputSection>
         <TagsSection className='tags'>
             <ol>
                 {/*
@@ -147,7 +155,7 @@ const AddMoney = () => (
                 <li>Food</li>
                 <li>Transportation</li>
             </ol>
-            <NewTagButton>New Tag</NewTagButton>
+            <button>New Tag</button>
         </TagsSection>
         <NotesSection>
             <label>
@@ -157,9 +165,7 @@ const AddMoney = () => (
             <div>Date</div>
         </NotesSection>
         <NumberPadSection>
-            <div className='output'>
-                100
-            </div>
+
             <div className='pad clearfix'>
                 {/* button{$}*16 */}
                 <button>1</button>
@@ -182,6 +188,6 @@ const AddMoney = () => (
                 <button className='ok'>OK</button>
             </div>
         </NumberPadSection>
-    </Layout>)
+    </MyLayout>)
 
 export default AddMoney;

@@ -13,10 +13,10 @@ const Main = styled.div`
   overflow: auto;
 `
 
-const Layout = ({children}: any) => {
+const Layout = ({children, className}: any) => {
     return (
         <Wrapper>
-            <Main>
+            <Main className={className}>
                 {children}
             </Main>
             <Nav/>
