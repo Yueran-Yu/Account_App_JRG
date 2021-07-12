@@ -9,6 +9,7 @@ const NavWrapper = styled.nav`
   line-height: 24px;
   font-size: 14px;
   color: #515151;
+  padding-top: 3px;
 
   > ul {
     display: flex;

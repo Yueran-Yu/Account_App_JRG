@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Layout from "../components/Layout";
 import {Icon} from "../components/Icon";
-
+import DatePicker from "react-datepicker";
+import {subMonths, addMonths} from 'date-fns';
+import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 const TagsSection = styled.section`
   background: #ffffff;
@@ -33,26 +36,26 @@ const TagsSection = styled.section`
 `
 const NotesSection = styled.section`
   background: #f5f5f5;
-  padding: 0 16px;
-  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-size: 16px;
 
-  > label {
-    display: flex;
-    align-items: center;
-
-    > span {
-      margin-right: 16px;
-      white-space: nowrap;
-    }
-
-    > input {
-      display: block;
-      width: 100%;
-      height: 72px;
-      background: none;
-      border: none;
-    }
+  div .icon {
+    fill: #5678de;
   }
+
+
+  div > .date {
+    border: 0.5px solid #5678de;
+    width: 80%;
+    text-align: center;
+    padding: 3px 0;
+    color: #5678de;
+    font-size: 16px;
+    border-radius: 5px 5px 5px 5px;
+  }
+
 `
 const OutputSection = styled.section`
   .output {
@@ -62,7 +65,7 @@ const OutputSection = styled.section`
     line-height: 56px;
     text-align: right;
     padding: 0 16px;
-    box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25), inset 0 5px 5px -5px rgba(0, 0, 0, 0.25)
+    box-shadow: inset 0 -3px 3px -3px rgba(0, 0, 0, 0.25);
   }
 `
 const CategorySection = styled.section`
@@ -75,7 +78,7 @@ const CategorySection = styled.section`
     line-height: 8px;
 
     > li {
-      border: 1px solid #5678de;
+      border: 0.5px solid #5678de;
       width: 20%;
       text-align: center;
       padding: 10px 0;
@@ -131,8 +134,10 @@ const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `
-const AddMoney = () => (
-    <MyLayout>
+const AddMoney = () => {
+    const [startDate, setStartDate] = useState<Date | null>(new Date());
+
+    return (<MyLayout>
         <CategorySection>
             <ul>
                 <li className='left'>Expense</li>
@@ -158,14 +163,24 @@ const AddMoney = () => (
             <button>New Tag</button>
         </TagsSection>
         <NotesSection>
-            <label>
-                <span>Notes</span>
-                <input type="text" placeholder='Add notes here'/>
-            </label>
-            <div>Date</div>
+            <div>
+                <DatePicker
+                    selected={startDate}
+                    onChange={(date: Date | null) => setStartDate(date)}
+                    className='date'
+                    dateFormat="dd / MMMM"
+                    dateFormatCalendar={"MMM yyyy"}
+                    minDate={subMonths(new Date(), 3)}
+                    maxDate={addMonths(new Date(), 3)}
+                    showMonthYearDropdown
+                />
+            </div>
+            <div className='notes'>
+                <Icon name='write'/>
+            </div>
+
         </NotesSection>
         <NumberPadSection>
-
             <div className='pad clearfix'>
                 {/* button{$}*16 */}
                 <button>1</button>
@@ -189,5 +204,6 @@ const AddMoney = () => (
             </div>
         </NumberPadSection>
     </MyLayout>)
+}
 
 export default AddMoney;
