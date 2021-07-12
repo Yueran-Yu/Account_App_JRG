@@ -35,27 +35,43 @@ const TagsSection = styled.section`
   }
 `
 const NotesSection = styled.section`
-  background: #f5f5f5;
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 10px 0;
 
-  div .icon {
-    fill: #5678de;
+  label {
+    display: flex;
+    align-items: center;
+    width: 80%;
+
+    > span {
+      margin-right: 6px;
+      white-space: nowrap;
+
+      .icon {
+        fill: #5678de;
+      }
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      background: none;
+      border: none;
+    }
   }
 
-
-  div > .date {
-    border: 0.5px solid #5678de;
-    width: 80%;
+  .date {
     text-align: center;
-    padding: 3px 0;
+    float: right;
+    width: 90%;
     color: #5678de;
-    font-size: 16px;
+    border: 0.5px solid #5678de;
+    padding: 3px 0;
+    margin-right: 5px;
     border-radius: 5px 5px 5px 5px;
   }
-
 `
 const OutputSection = styled.section`
   .output {
@@ -163,21 +179,21 @@ const AddMoney = () => {
             <button>New Tag</button>
         </TagsSection>
         <NotesSection>
-            <div>
-                <DatePicker
-                    selected={startDate}
-                    onChange={(date: Date | null) => setStartDate(date)}
-                    className='date'
-                    dateFormat="dd / MMMM"
-                    dateFormatCalendar={"MMM yyyy"}
-                    minDate={subMonths(new Date(), 3)}
-                    maxDate={addMonths(new Date(), 3)}
-                    showMonthYearDropdown
-                />
-            </div>
-            <div className='notes'>
-                <Icon name='write'/>
-            </div>
+            <label>
+                <span><Icon name='write'/></span>
+                <input type="text" placeholder="Please add notes here"/>
+            </label>
+            <DatePicker
+                className='date'
+                selected={startDate}
+                onChange={(date: Date | null) => setStartDate(date)}
+                dateFormat="dd / MMMM"
+                dateFormatCalendar={"MMM yyyy"}
+                minDate={subMonths(new Date(), 6)}
+                maxDate={addMonths(new Date(), 6)}
+                showMonthYearDropdown
+            />
+
 
         </NotesSection>
         <NumberPadSection>
