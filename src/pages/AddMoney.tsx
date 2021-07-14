@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Layout from "../components/Layout";
 import {Icon} from "../components/Icon";
-import DatePicker from "react-datepicker";
-import {subMonths, addMonths} from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import {CategorySection} from '../components/AddMoney/CategorySection';
 import {OutputSection} from '../components/AddMoney/OutputSection';
 import {TagsSection} from '../components/AddMoney/TagsSection';
-import {NotesSection} from '../components/AddMoney/NotesSections';
+import {NoteSection} from '../components/AddMoney/NoteSections';
 import {NumberPadSection} from "../components/AddMoney/NumberPadSection";
 
 
@@ -18,7 +16,6 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `
 const AddMoney = () => {
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
     return (<MyLayout>
         <CategorySection>
             <ul>
@@ -32,24 +29,7 @@ const AddMoney = () => {
             </div>
         </OutputSection>
         <TagsSection/>
-        <NotesSection>
-            <label>
-                <span><Icon name='write'/></span>
-                <input type="text" placeholder="Add notes here"/>
-            </label>
-            <DatePicker
-                className='date'
-                selected={startDate}
-                onChange={(date: Date | null) => setStartDate(date)}
-                dateFormat="dd/MMMM"
-                dateFormatCalendar={"MMM yyyy"}
-                minDate={subMonths(new Date(), 6)}
-                maxDate={addMonths(new Date(), 6)}
-                showMonthYearDropdown
-            />
-
-
-        </NotesSection>
+        <NoteSection/>
         <NumberPadSection>
             <div className='pad clearfix'>
                 {/* button{$}*16 */}

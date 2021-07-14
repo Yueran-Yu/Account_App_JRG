@@ -32,6 +32,7 @@ const Wrapper = styled.section`
     border-bottom: 1px solid #333;
     color: #666;
     margin-top: 8px;
+    font-family: fantasy;
   }
 `
 
@@ -46,7 +47,6 @@ export const TagsSection: React.FC = () => {
     }
 
     const selected = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : ''
-
     const onToggleTag = (currentTag: string) => {
         const index = selectedTags.indexOf(currentTag)
         if (index >= 0) {
