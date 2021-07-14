@@ -8,7 +8,7 @@ import {NotMatch} from 'pages/NotMatch';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-  color: #333333;
+  color: #6d6c6c;
 `
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
         <AppWrapper>
             <Router>
                 <Switch>
-                    <Route path="/tags">
-                        <Tags/>
-                    </Route>
                     <Route path="/money">
                         <AddMoney/>
+                    </Route>
+                    <Route path="/tags">
+                        <Tags/>
                     </Route>
                     <Route path="/statistics">
                         <Statistics/>

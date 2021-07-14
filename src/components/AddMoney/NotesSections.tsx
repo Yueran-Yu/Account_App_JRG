@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const NotesSection = styled.section`
   font-size: 14px;
   display: flex;
@@ -24,6 +25,11 @@ export const NotesSection = styled.section`
       width: 100%;
       background: none;
       border: none;
+
+      ::placeholder {
+        color: #bebebe;
+        font-family: fantasy;
+      }
     }
   }
 

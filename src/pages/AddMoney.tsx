@@ -6,11 +6,11 @@ import DatePicker from "react-datepicker";
 import {subMonths, addMonths} from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import {CategorySection} from './AddMoney/CategorySection';
-import {OutputSection} from './AddMoney/OutputSection';
-import {TagsSection} from './AddMoney/TagsSections';
-import {NotesSection} from './AddMoney/NotesSections';
-import {NumberPadSection} from "./AddMoney/NumberPadSection";
+import {CategorySection} from '../components/AddMoney/CategorySection';
+import {OutputSection} from '../components/AddMoney/OutputSection';
+import {TagsSection} from '../components/AddMoney/TagsSection';
+import {NotesSection} from '../components/AddMoney/NotesSections';
+import {NumberPadSection} from "../components/AddMoney/NumberPadSection";
 
 
 const MyLayout = styled(Layout)`
@@ -35,7 +35,7 @@ const AddMoney = () => {
         <NotesSection>
             <label>
                 <span><Icon name='write'/></span>
-                <input type="text" placeholder="Please add notes here"/>
+                <input type="text" placeholder="Add notes here"/>
             </label>
             <DatePicker
                 className='date'

@@ -19,7 +19,7 @@ const Layout = ({children, className}: any) => {
             <Main className={className}>
                 {children}
             </Main>
-            <Nav/>
+             <Nav/>
         </Wrapper>
     )
 }
