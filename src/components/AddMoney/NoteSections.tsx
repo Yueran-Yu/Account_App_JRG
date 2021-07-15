@@ -49,13 +49,12 @@ const Wrapper = styled.section`
   }
 `
 
-
 export const NoteSection: React.FC = () => {
     const [startDate, setStartDate] = useState<Date | null>(new Date());
     const [note, setNote] = useState('')
-    const refInput = useRef<HTMLInputElement>(null)
+    const refInput = useRef<HTMLInputElement>(null)!
     const onBlur = () => {
-        if (refInput !== null) {
+        if (refInput !== null && refInput && refInput.current) {
             setNote(refInput.current.value)
         }
     }
@@ -67,6 +66,7 @@ export const NoteSection: React.FC = () => {
                 <input
                     type="text"
                     placeholder="Add notes here"
+                    ref={refInput}
                     defaultValue={note}
                     onBlur={onBlur}/>
             </label>

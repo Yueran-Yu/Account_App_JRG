@@ -17,12 +17,8 @@ const MyLayout = styled(Layout)`
 `
 const AddMoney = () => {
     return (<MyLayout>
-        <CategorySection>
-            <ul>
-                <li className='left'>Expense</li>
-                <li className='selected right'>Income</li>
-            </ul>
-        </CategorySection>
+        <CategorySection />
+
         <OutputSection>
             <div className='output'>
                 100
