@@ -18,37 +18,10 @@ const MyLayout = styled(Layout)`
 const AddMoney = () => {
     return (<MyLayout>
         <CategorySection />
-
-        <OutputSection>
-            <div className='output'>
-                100
-            </div>
-        </OutputSection>
+        <OutputSection />
         <TagsSection/>
         <NoteSection/>
-        <NumberPadSection>
-            <div className='pad clearfix'>
-                {/* button{$}*16 */}
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>
-                    <Icon name='delete'/>
-                </button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>+</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>-</button>
-                <button>C</button>
-                <button>0</button>
-                <button>.</button>
-                <button className='ok'>OK</button>
-            </div>
-        </NumberPadSection>
+        <NumberPadSection />
     </MyLayout>)
 }
 

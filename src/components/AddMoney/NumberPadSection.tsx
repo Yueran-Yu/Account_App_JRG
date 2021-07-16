@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import React, {useState} from 'react';
+import {Icon} from "../Icon";
+import {OutputSection} from './OutputSection';
 
-export const NumberPadSection = styled.section`
+const Wrapper = styled.section`
   .pad {
     display: flex;
     flex-wrap: wrap;
@@ -29,3 +32,32 @@ export const NumberPadSection = styled.section`
     }
   }
 `
+export const NumberPadSection = () => {
+    const [output, setOutput] = useState<string>('0')
+
+    return (
+            <Wrapper>
+            <div className='pad clearfix'>
+                {/* button{$}*16 */}
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>
+                    <Icon name='delete'/>
+                </button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>+</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>-</button>
+                <button>C</button>
+                <button>0</button>
+                <button>.</button>
+                <button className='ok'>OK</button>
+            </div>
+        </Wrapper>
+    )
+}

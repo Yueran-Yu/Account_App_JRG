@@ -3,24 +3,27 @@ import React, {useState} from 'react';
 
 export const Wrapper = styled.section`
   font-size: 14px;
-  margin: 10px 0;
+  margin: 10px auto;
+  display: inline-flex;
 
-  > ul {
-    display: flex;
-    justify-content: center;
-    line-height: 8px;
+  > .roundCorner {
+    border-radius: 5px 5px 5px 5px;
+    border: 0.5px solid #5678de;
 
 
-    > li {
-      border: 0.5px solid #5678de;
-      width: 20%;
-      text-align: center;
-      padding: 10px 0;
-      color: #5678de;
+    > ul {
+      display: flex;
+      justify-content: center;
 
-      &.selected {
-        background: #5678de;
-        color: white;
+      > li {
+        text-align: center;
+        padding: 6px 10px;
+        color: #5678de;
+
+        &.selected {
+          background: #5678de;
+          color: white;
+        }
       }
     }
   }
@@ -36,17 +39,19 @@ export const CategorySection: React.FC = () => {
 
     return (
         <Wrapper>
-            <ul>
+            <div className='roundCorner'>
+                <ul>
 
-                {
-                    categoryList.map(c =>
-                        <li onClick={() => {setCategory(c)}}
-                            className={category === c ? 'selected' : ''}>
-                            {categoryMap[c]}
-                        </li>)
+                    {
+                        categoryList.map(c =>
+                            <li onClick={() => {setCategory(c)}}
+                                className={category === c ? 'selected' : ''}>
+                                {categoryMap[c]}
+                            </li>)
 
-                }
-            </ul>
+                    }
+                </ul>
+            </div>
         </Wrapper>
     )
 }
