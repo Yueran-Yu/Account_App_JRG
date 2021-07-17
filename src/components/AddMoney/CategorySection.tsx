@@ -44,7 +44,8 @@ export const CategorySection: React.FC = () => {
 
                     {
                         categoryList.map(c =>
-                            <li onClick={() => {setCategory(c)}}
+                            <li key={c}
+                                onClick={() => {setCategory(c)}}
                                 className={category === c ? 'selected' : ''}>
                                 {categoryMap[c]}
                             </li>)

@@ -107,7 +107,8 @@
     "@types/webpack": "^5.28.0",
     "@types/webpack-env": "^1.16.2",
     "svg-sprite-loader": "^6.0.9",
-    "svgo-loader": "^3.0.0"
+    "svgo-loader": "^3.0.0",
+    "use-between": "^0.0.18"
   },
   "jest": {
     "roots": [
