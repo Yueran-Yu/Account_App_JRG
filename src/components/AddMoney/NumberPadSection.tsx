@@ -84,19 +84,37 @@ export const NumberPadSection = () => {
                 case '7':
                 case '8':
                 case '9':
-
-                    if (output === '0') {
-                        setOutput(text)
-                        setTotal(text)
-                    } else {
-                        if (total === '') {
-                            setOutput(text)
-                            setTotal(text)
-                        } else {
+                    if (total.length > 0) {
+                        if (output.length > 0) {
                             setOutput(output + text)
                             setTotal(total + text)
+                        } else {
+                            setOutput(text)
+                            setTotal(total + text)
                         }
+                    } else {
+                        setOutput(text)
+                        setTotal(text)
                     }
+
+
+                    // if (output === '0') {
+                    //     if (total.indexOf('+') >= 1 || total.indexOf('-') >= 1) {
+                    //         setOutput(text)
+                    //         setTotal(total + text)
+                    //     } else {
+                    //         setOutput(text)
+                    //         setTotal(text)
+                    //     }
+                    // } else {
+                    //     if (total === '') {
+                    //         setOutput(text)
+                    //         setTotal(text)
+                    //     } else {
+                    //         setOutput(text)
+                    //         setTotal(total + text)
+                    //     }
+                    // }
                     break;
                 case '':
                     if (total.length > 1) {
@@ -113,8 +131,16 @@ export const NumberPadSection = () => {
                     break;
                 case '+':
                     setBtn('=')
-                    setTotal(total + text)
-                    setOutput('')
+
+                    // 请用total  同事控制变量
+                    if (output.length > 1) {
+                        setTotal(total + text)
+                        setOutput('')
+                    } else {
+                        setTotal(output + text)
+                        setOutput('')
+                    }
+
                     break;
                 case '-':
                     setBtn('=')
