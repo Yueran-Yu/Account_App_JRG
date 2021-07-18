@@ -5,7 +5,7 @@ import {Icon} from "../Icon";
 const Wrapper = styled.section`
   .output {
     background: white;
-    font-size: 42px;
+    font-size: 38px;
     color: #8d8d8d;
     line-height: 56px;
     text-align: right;
@@ -42,7 +42,20 @@ const Wrapper = styled.section`
   }
 `
 export const NumberPadSection = () => {
-    const [output, setOutput] = useState('0')
+    const [output, _setOutput] = useState('0')
+    const [btn, setBtn] = useState('OK')
+    let temp = ''
+    let totaltemp = ''
+
+    const setOutput = (output: string) => {
+        if (output.length > 16) {
+            output = output.slice(0, 16)
+        } else if (output.length === 0) {
+            output = '0'
+        }
+        _setOutput(output)
+    }
+
     const onClickButtonWrapper = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) {return}
@@ -57,34 +70,55 @@ export const NumberPadSection = () => {
             case '7':
             case '8':
             case '9':
-                if (output === '0' && output.length <= 1) {
+                if (output === '0') {
                     setOutput(text)
                 } else {
                     setOutput(output + text)
                 }
                 break;
             case '':
-                console.log('delete')
+                if (output.length === 1) {
+                    setOutput('')
+                } else {
+                    setOutput(output.slice(0, -1))
+                }
+
                 break;
             case '+':
-                console.log(text)
+                setBtn('=')
+                // const lastLetter = (output.length - 1)
+                // const secLastLetter = (output.length - 2)
+                // console.log("last " + output.charAt(lastLetter))
+                // console.log("sec " + output.charAt(secLastLetter))
+
+                if (output === '0') {
+                    temp = output
+                    console.log(temp)
+                    totaltemp = temp + text
+                    console.log(totaltemp)
+                    setOutput('0')
+                } else {
+                    setOutput(output + text)
+                }
                 break;
             case '-':
                 console.log(text)
                 break;
             case 'C':
-                console.log(text)
+                setOutput('')
                 break;
             case '.':
-                console.log(text)
+                if (output.indexOf('.') >= 0) {
+                    return;
+                } else {
+                    setOutput(output + '.')
+                }
                 break;
             case 'OK':
                 console.log(text)
                 break;
             default:
                 break;
-
-
         }
     }
     return (
@@ -111,7 +145,8 @@ export const NumberPadSection = () => {
                 <button>C</button>
                 <button>0</button>
                 <button>.</button>
-                <button className='ok'>OK</button>
+
+                <button className='ok'>{btn}</button>
             </div>
         </Wrapper>
     )
