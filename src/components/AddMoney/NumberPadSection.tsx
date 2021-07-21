@@ -15,9 +15,10 @@ const Wrapper = styled.section`
     box-shadow: inset 0 -3px 3px -3px rgba(0, 0, 0, 0.25);
 
     .output {
-      font-size: 38px;
+      font-size: 36px;
+      line-height: 35px;
       height: 35px;
-      padding-bottom: 2px;
+      padding: 4px 0;
     }
 
     .total {
@@ -56,17 +57,32 @@ const Wrapper = styled.section`
 `
 export const NumberPadSection = () => {
     const [output, _setOutput] = useState('0')
-    const [total, setTotal] = useState('')
+    const [result, setResult] = useState('')
+    const [temp, setTemp] = useState('')
     const [btn, setBtn] = useState('OK')
 
-    const setOutput = (output: string) => {
-        if (output.length > 16) {
-            output = output.slice(0, 16)
-        } else if (output.length === 0) {
-            output = ''
+    const setOutput = (x: string) => {
+        if (x.length > 16) {
+            x = x.slice(0, 16)
+        } else if (x.length === 0) {
+            x = ''
         }
-        _setOutput(output)
+        _setOutput(x)
     }
+
+    const calculate = (value: string) => {
+        if (value !== '') {
+            try {
+                return eval(value)
+            } catch (e) {
+                setResult('Error')
+            }
+        } else {
+            return
+        }
+    }
+
+    // eval(output).toFixed(9).toString().replace(/(\.0*|(?<=(\..*))0*)$/, '')
 
     const onClickButtonWrapper = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
@@ -84,104 +100,82 @@ export const NumberPadSection = () => {
                 case '7':
                 case '8':
                 case '9':
-                    if (total.length > 0) {
-                        if (output.length > 0) {
-                            setOutput(output + text)
-                            setTotal(total + text)
-                        } else {
-                            setOutput(text)
-                            setTotal(total + text)
-                        }
-                    } else {
+                    if (output === '0') {
                         setOutput(text)
-                        setTotal(text)
+                        setTemp(text)
+
+                    } else {
+                        setOutput(output + text)
+                        setTemp(temp + text)
+                        console.log("================")
+                        console.log(temp)
                     }
-
-
-                    // if (output === '0') {
-                    //     if (total.indexOf('+') >= 1 || total.indexOf('-') >= 1) {
-                    //         setOutput(text)
-                    //         setTotal(total + text)
-                    //     } else {
-                    //         setOutput(text)
-                    //         setTotal(text)
-                    //     }
-                    // } else {
-                    //     if (total === '') {
-                    //         setOutput(text)
-                    //         setTotal(text)
-                    //     } else {
-                    //         setOutput(text)
-                    //         setTotal(total + text)
-                    //     }
-                    // }
                     break;
                 case '':
-                    if (total.length > 1) {
-                        if (output === '') {
-                            setTotal(total.slice(0, -1))
-                        } else {
-                            setOutput(output.slice(0, -1))
-                            setTotal(total.slice(0, -1))
-                        }
-                    } else {
-                        setOutput('0')
-                        setTotal('')
-                    }
+                    temp.length > 1 ? setTemp(temp.slice(0, -1)) : setTemp('')
+                    console.log("text delete")
+                    console.log(temp)
+                    output.length > 1 ? setOutput(output.slice(0, -1)) : setOutput('0')
+                    result.length > 1 ? setResult(result.slice(0, -1)) : setResult('0')
                     break;
                 case '+':
-                    setBtn('=')
-
-                    // 请用total  同事控制变量
-                    if (output.length > 1) {
-                        setTotal(total + text)
-                        setOutput('')
-                    } else {
-                        setTotal(output + text)
-                        setOutput('')
-                    }
-
-                    break;
                 case '-':
                     setBtn('=')
-                    setTotal(total + text)
-                    setOutput('')
+                    setTemp('')
+                    if (result.length > 1) {
+                        setOutput(result + text)
+                    } else {
+                        setOutput(output + text)
+                    }
+
+                    console.log("+++++++++")
+                    console.log(output)
+                    if (output.indexOf('+') > 0 || output.indexOf('-') > 0) {
+                        setResult(calculate(output))
+                    }
                     break;
                 case 'C':
                     setOutput('0')
-                    setTotal('')
+                    setTemp('')
+                    setResult('0')
                     break;
                 case '.':
-                    if (output.indexOf('.') >= 0) {
-                        return;
+                    if (temp.indexOf('.') >= 1) {
+                        console.log("can't click '.' again ")
+                        return
                     } else {
-                        setTotal(total + text)
-                        setOutput(output + '.')
+                        setTemp(temp + text)
+                        setOutput(output + text)
+                        console.log("******************")
+                        console.log(temp)
                     }
                     break;
                 case 'OK':
-                    console.log(output)
+                    setResult(calculate(output))
+                    setOutput('')
+                    setTemp('')
                     break;
                 case '=':
+                    setResult(calculate(output))
                     setBtn('OK')
-                    setOutput(eval(total).toFixed(9).toString().replace(/(\.0*|(?<=(\..*))0*)$/, ''))
-                    setTotal('')
+                    setOutput('')
+                    setTemp('')
+
                     break;
                 default:
                     break;
             }
         } catch (e) {
-            console.log(e.message())
+            console.log(e)
         }
-
     }
     return (
         <Wrapper>
             <div className='outputWrapper'>
                 <div className='output'>
-                    {output}
+                    {result.length <= 0 ? '0' : result}
                 </div>
-                <span className='total'>{total}</span>
+                <span className='total'>{output === '0' ? '' : output}</span>
             </div>
             <div className='pad clearfix' onClick={onClickButtonWrapper}>
                 {/* button{$}*16 */}

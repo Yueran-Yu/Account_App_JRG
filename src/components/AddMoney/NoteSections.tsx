@@ -46,6 +46,7 @@ const Wrapper = styled.section`
     padding: 3px 0;
     margin-right: 5px;
     border-radius: 5px 5px 5px 5px;
+    font-weight: 700;
   }
 `
 
