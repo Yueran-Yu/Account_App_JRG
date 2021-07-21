@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import {Icon} from "../Icon";
 
 const Wrapper = styled.section`
-  cursor: pointer;
-
   .outputWrapper {
     display: flex;
     flex-direction: column;
@@ -30,6 +28,7 @@ const Wrapper = styled.section`
   .pad {
     display: flex;
     flex-wrap: wrap;
+    cursor: auto;
 
     > button {
       width: 25%;
@@ -60,6 +59,8 @@ export const NumberPadSection = () => {
     const [result, setResult] = useState('0')
     const [temp, setTemp] = useState('')
     const [btn, setBtn] = useState('OK')
+    const lastChar = output.charAt(output.length - 1)
+
     const setOutput = (x: string) => {
         if (x.length > 30) {
             x = x.slice(0, 30)
@@ -73,14 +74,13 @@ export const NumberPadSection = () => {
         return c >= '0' && c <= '9'
     }
 
-    const calculate = (value: string) => {
+    const calc = (value: string) => {
         if (value !== '') {
             return eval(value).toFixed(9).toString().replace(/(\.0*|(?<=(\..*))0*)$/, '')
         } else {
             return '0'
         }
     }
-
     const onClickButtonWrapper = (e: React.MouseEvent) => {
         const text = (e.target as HTMLButtonElement).textContent
         if (text === null) {return}
@@ -100,30 +100,27 @@ export const NumberPadSection = () => {
                     if (output === '0') {
                         setOutput(text)
                         setTemp(text)
-                        setResult(calculate(text))
+                        setResult(calc(text))
                     } else {
                         setOutput(output + text)
                         setTemp(temp + text)
-                        setResult(calculate(output + text))
+                        setResult(calc(output + text))
                     }
+                    console.log("temp = ")
+                    console.log(temp)
                     break;
                 case '':
-                    console.log("&&&&&&&&&&&&&&&")
-                    console.log(temp)
-                    console.log("test delete")
-                    console.log(output.length)
                     if (output.length > 0) {
                         setOutput(output.slice(0, -1))
                         if (output.charAt(output.length - 2) === '+' || output.charAt(output.length - 2) === '-') {
-                            setResult(calculate(output.slice(0, -2)))
-
+                            setResult(calc(output.slice(0, -2)))
                         } else {
-                            setResult(calculate(output.slice(0, -1)))
+                            setResult(calc(output.slice(0, -1)))
                         }
                     } else {
-                        setOutput('0')
+                        console.log("triggered???? ")
+                        result.length > 1 ? setResult(result.slice(0, -1)) : setResult('0')
                     }
-
                     output.length <= 1 ? setBtn('OK') : setBtn('=')
                     temp.length > 1 ? setTemp(temp.slice(0, -1)) : setTemp('')
                     break;
@@ -133,7 +130,7 @@ export const NumberPadSection = () => {
                     setTemp('')
                     if (output.length === 0) {
                         setOutput(result + text)
-                    } else if (isANumber(output.charAt(output.length - 1)) || output.charAt(output.length - 1) === '.') {
+                    } else if (isANumber(lastChar) || lastChar === '.') {
                         setOutput(output + text)
                     }
                     break;
@@ -143,39 +140,49 @@ export const NumberPadSection = () => {
                     setResult('0')
                     break;
                 case '.':
-                    console.log("%%%%%%^&")
-                    console.log(temp)
-                    console.log(temp.charAt(0))
-                    if (temp.charAt(0) === '.') {
-                        setTemp('0.')
-                    } else {
+                    if (output.length > 0 && output !== '0') {
+
                         if (temp.indexOf('.') >= 1 || temp.charAt(0) === '.') {
                             console.log("can't click '.' again ")
                             return
                         } else {
                             setTemp(temp + text)
-                            if (output.length > 1) {
-                                setOutput(output + '0.')
-                            } else {
-                                setOutput(output + text)
+                            setOutput(output + text)
+                            if (temp.length === 0) {
+                                setTemp(temp + '0' + text)
+                                setOutput(output + '0' + text)
                             }
                         }
+
+                        // console.log("triggered?")
+                        // console.log("output & length")
+                        // console.log(output.length)
+                        // console.log(output)
+                        // console.log("temp & length")
+                        // console.log(temp)
+                        // console.log(temp.length)
+                    } else {
+                        setTemp('0' + text)
+                        setOutput('0' + text)
                     }
+
                     break;
                 case 'OK':
-                    if (output.length === 0) {
-                        return
-                    }
-                    setResult(calculate(output))
+                    if (output.length === 0) return
+                    setResult(calc(output))
                     setOutput('')
                     setTemp('')
                     break;
                 case '=':
-                    setResult(calculate(output))
+
+                    if (lastChar === '+' || lastChar === '-') {
+                        setResult(calc(output.slice(0, -1)))
+                    } else {
+                        setResult(calc(output))
+                    }
                     setBtn('OK')
                     setOutput('')
                     setTemp('')
-
                     break;
                 default:
                     break;
