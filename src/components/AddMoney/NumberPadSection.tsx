@@ -57,13 +57,13 @@ const Wrapper = styled.section`
 `
 export const NumberPadSection = () => {
     const [output, _setOutput] = useState('0')
-    const [result, setResult] = useState('')
+    const [result, setResult] = useState('0')
     const [temp, setTemp] = useState('')
     const [btn, setBtn] = useState('OK')
 
     const setOutput = (x: string) => {
-        if (x.length > 16) {
-            x = x.slice(0, 16)
+        if (x.length > 26) {
+            x = x.slice(0, 26)
         } else if (x.length === 0) {
             x = ''
         }
@@ -72,16 +72,15 @@ export const NumberPadSection = () => {
 
     const calculate = (value: string) => {
         if (value !== '') {
-            try {
-                return eval(value)
-            } catch (e) {
-                setResult('Error')
-            }
+            return eval(value)
         } else {
-            return
+            return '0'
         }
     }
 
+    const isANumber = (c: string) => {
+        return c >= '0' && c <= '9'
+    }
     // eval(output).toFixed(9).toString().replace(/(\.0*|(?<=(\..*))0*)$/, '')
 
     const onClickButtonWrapper = (e: React.MouseEvent) => {
@@ -114,7 +113,6 @@ export const NumberPadSection = () => {
                 case '':
                     temp.length > 1 ? setTemp(temp.slice(0, -1)) : setTemp('')
                     console.log("text delete")
-                    console.log(temp)
                     output.length > 1 ? setOutput(output.slice(0, -1)) : setOutput('0')
                     result.length > 1 ? setResult(result.slice(0, -1)) : setResult('0')
                     break;
@@ -122,16 +120,10 @@ export const NumberPadSection = () => {
                 case '-':
                     setBtn('=')
                     setTemp('')
-                    if (result.length > 1) {
+                    if (output.length === 0) {
                         setOutput(result + text)
-                    } else {
+                    } else if (isANumber(output.charAt(output.length - 1))) {
                         setOutput(output + text)
-                    }
-
-                    console.log("+++++++++")
-                    console.log(output)
-                    if (output.indexOf('+') > 0 || output.indexOf('-') > 0) {
-                        setResult(calculate(output))
                     }
                     break;
                 case 'C':
@@ -146,11 +138,12 @@ export const NumberPadSection = () => {
                     } else {
                         setTemp(temp + text)
                         setOutput(output + text)
-                        console.log("******************")
-                        console.log(temp)
                     }
                     break;
                 case 'OK':
+                    if (output.length === 0) {
+                        return
+                    }
                     setResult(calculate(output))
                     setOutput('')
                     setTemp('')
@@ -173,7 +166,7 @@ export const NumberPadSection = () => {
         <Wrapper>
             <div className='outputWrapper'>
                 <div className='output'>
-                    {result.length <= 0 ? '0' : result}
+                    {result}
                 </div>
                 <span className='total'>{output === '0' ? '' : output}</span>
             </div>
