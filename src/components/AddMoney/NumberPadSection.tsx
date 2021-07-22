@@ -62,9 +62,13 @@ export const NumberPadSection = () => {
     const lastChar = output.charAt(output.length - 1)
 
     const setOutput = (x: string) => {
-        if (x.length > 40) {
+        if (x.slice(0, 10).includes('+') || x.slice(0, 10).includes('-') || x.slice(0, 10).includes('.')) {
             x = x.slice(0, 40)
-        } else if (x.length === 0) {
+        } else {
+            x = x.slice(0, 10)
+            if (x.length > 9) alert("The number is long.")
+        }
+        if (x.length === 0) {
             x = ''
         }
         _setOutput(x)
@@ -78,8 +82,8 @@ export const NumberPadSection = () => {
         }
     }
     const setResult = (x: string) => {
-        if (x.length > 6) {
-            _setResult(x.slice(0, 6))
+        if (x.length > 9) {
+            _setResult(x.slice(0, 9))
         } else {
             _setResult(x)
         }
@@ -114,7 +118,6 @@ export const NumberPadSection = () => {
                 case '9':
                     if (output.length > 0 && output !== '0') {
                         if (output.charAt(output.length - 1) === '0') {
-                            console.log("????")
                             setOutput(output.slice(0, -1) + text)
                             setTemp(text)
                             setResult(calc(output.slice(0, -1) + text))
@@ -128,12 +131,6 @@ export const NumberPadSection = () => {
                         setTemp(text)
                         setResult(calc(text))
                     }
-
-
-                    console.log("temp")
-                    console.log(temp)
-                    console.log("output")
-                    console.log(output.indexOf('+'))
                     break;
                 case '':
                     if (output.length > 0) {
