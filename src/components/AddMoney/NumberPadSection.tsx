@@ -56,18 +56,33 @@ const Wrapper = styled.section`
 `
 export const NumberPadSection = () => {
     const [output, _setOutput] = useState('0')
-    const [result, setResult] = useState('0')
-    const [temp, setTemp] = useState('')
+    const [result, _setResult] = useState('0')
+    const [temp, _setTemp] = useState('')
     const [btn, setBtn] = useState('OK')
     const lastChar = output.charAt(output.length - 1)
 
     const setOutput = (x: string) => {
-        if (x.length > 30) {
-            x = x.slice(0, 30)
+        if (x.length > 40) {
+            x = x.slice(0, 40)
         } else if (x.length === 0) {
             x = ''
         }
         _setOutput(x)
+    }
+
+    const setTemp = (x: string) => {
+        if (x.length > 9) {
+            _setTemp(x.slice(0, 9))
+        } else {
+            _setTemp(x)
+        }
+    }
+    const setResult = (x: string) => {
+        if (x.length > 6) {
+            _setResult(x.slice(0, 6))
+        } else {
+            _setResult(x)
+        }
     }
 
     const isANumber = (c: string) => {
@@ -99,7 +114,7 @@ export const NumberPadSection = () => {
                 case '9':
                     if (output.length > 0 && output !== '0') {
                         if (output.charAt(output.length - 1) === '0') {
-                            console.log("??????")
+                            console.log("????")
                             setOutput(output.slice(0, -1) + text)
                             setTemp(text)
                             setResult(calc(output.slice(0, -1) + text))
@@ -113,7 +128,12 @@ export const NumberPadSection = () => {
                         setTemp(text)
                         setResult(calc(text))
                     }
+
+
+                    console.log("temp")
                     console.log(temp)
+                    console.log("output")
+                    console.log(output.indexOf('+'))
                     break;
                 case '':
                     if (output.length > 0) {
@@ -124,7 +144,7 @@ export const NumberPadSection = () => {
                             setResult(calc(output.slice(0, -1)))
                         }
                     } else {
-                        console.log("triggered???? ")
+                        console.log("triggered???")
                         result.length > 1 ? setResult(result.slice(0, -1)) : setResult('0')
                     }
                     output.length <= 1 ? setBtn('OK') : setBtn('=')
@@ -147,7 +167,6 @@ export const NumberPadSection = () => {
                     break;
                 case '.':
                     if (output.length > 0 && output !== '0') {
-
                         if (temp.indexOf('.') >= 1 || temp.charAt(0) === '.') {
                             console.log("can't click '.' again ")
                             return
@@ -163,7 +182,6 @@ export const NumberPadSection = () => {
                         setTemp('0' + text)
                         setOutput('0' + text)
                     }
-
                     break;
                 case 'OK':
                     if (output.length === 0) return
@@ -172,7 +190,6 @@ export const NumberPadSection = () => {
                     setTemp('')
                     break;
                 case '=':
-
                     if (lastChar === '+' || lastChar === '-') {
                         setResult(calc(output.slice(0, -1)))
                     } else {
@@ -221,3 +238,6 @@ export const NumberPadSection = () => {
         </Wrapper>
     )
 }
+
+
+
