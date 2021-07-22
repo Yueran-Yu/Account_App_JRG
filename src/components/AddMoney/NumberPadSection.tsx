@@ -97,16 +97,22 @@ export const NumberPadSection = () => {
                 case '7':
                 case '8':
                 case '9':
-                    if (output === '0') {
+                    if (output.length > 0 && output !== '0') {
+                        if (output.charAt(output.length - 1) === '0') {
+                            console.log("??????")
+                            setOutput(output.slice(0, -1) + text)
+                            setTemp(text)
+                            setResult(calc(output.slice(0, -1) + text))
+                        } else {
+                            setOutput(output + text)
+                            setTemp(temp + text)
+                            setResult(calc(output + text))
+                        }
+                    } else {
                         setOutput(text)
                         setTemp(text)
                         setResult(calc(text))
-                    } else {
-                        setOutput(output + text)
-                        setTemp(temp + text)
-                        setResult(calc(output + text))
                     }
-                    console.log("temp = ")
                     console.log(temp)
                     break;
                 case '':
@@ -153,14 +159,6 @@ export const NumberPadSection = () => {
                                 setOutput(output + '0' + text)
                             }
                         }
-
-                        // console.log("triggered?")
-                        // console.log("output & length")
-                        // console.log(output.length)
-                        // console.log(output)
-                        // console.log("temp & length")
-                        // console.log(temp)
-                        // console.log(temp.length)
                     } else {
                         setTemp('0' + text)
                         setOutput('0' + text)
