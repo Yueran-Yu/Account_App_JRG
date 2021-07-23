@@ -30,30 +30,30 @@ export const Wrapper = styled.section`
 `
 
 export const CategorySection: React.FC = () => {
-    const [category, setCategory] = useState('-') // - means expense, + means income
-    const categoryMap = {'-': 'Expense', '+': 'Income'}
-    type Keys = keyof typeof categoryMap
-    // 新的类型： 字符串的联合
-    const [categoryList] = useState<(Keys)[]>(['-', '+'])
-    // equals const [categoryList] = useState<('-', '+')[]>(['-', '+'])
+	const [category, setCategory] = useState('-') // - means expense, + means income
+	const categoryMap = {'-': 'Expense', '+': 'Income'}
+	type Keys = keyof typeof categoryMap
+	// 新的类型： 字符串的联合
+	const [categoryList] = useState<(Keys)[]>(['-', '+'])
+	// equals const [categoryList] = useState<('-', '+')[]>(['-', '+'])
 
-    return (
-        <Wrapper>
-            <div className='roundCorner'>
-                <ul>
+	return (
+		<Wrapper>
+			<div className='roundCorner'>
+				<ul>
 
-                    {
-                        categoryList.map(c =>
-                            <li key={c}
-                                onClick={() => {setCategory(c)}}
-                                className={category === c ? 'selected' : ''}>
-                                {categoryMap[c]}
-                            </li>)
+					{
+						categoryList.map(c =>
+							<li key={c}
+									onClick={() => {setCategory(c)}}
+									className={category === c ? 'selected' : ''}>
+								{categoryMap[c]}
+							</li>)
 
-                    }
-                </ul>
-            </div>
-        </Wrapper>
-    )
+					}
+				</ul>
+			</div>
+		</Wrapper>
+	)
 }
 

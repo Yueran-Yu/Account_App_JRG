@@ -41,27 +41,27 @@ const NavWrapper = styled.nav`
   }
 `
 const Nav = () => {
-    return (
-        <NavWrapper>
-            <ul>
-                <li>
-                    <NavLink to="/money" activeClassName='selected'>
-                        <Icon name='money'/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/tags" activeClassName='selected'>
-                        <Icon name='tags'/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/statistics" activeClassName='selected'>
-                        <Icon name='statistics'/>
-                    </NavLink>
-                </li>
-            </ul>
-        </NavWrapper>
-    )
+	return (
+		<NavWrapper>
+			<ul>
+				<li>
+					<NavLink to="/money" activeClassName='selected'>
+						<Icon name='money'/>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to="/tags" activeClassName='selected'>
+						<Icon name='tags'/>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to="/statistics" activeClassName='selected'>
+						<Icon name='statistics'/>
+					</NavLink>
+				</li>
+			</ul>
+		</NavWrapper>
+	)
 }
 
 export default Nav;

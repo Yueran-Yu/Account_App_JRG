@@ -12,27 +12,27 @@ const AppWrapper = styled.div`
 `
 
 function App() {
-    return (
-        <AppWrapper>
-            <Router>
-                <Switch>
-                    <Route path="/money">
-                        <AddMoney/>
-                    </Route>
-                    <Route path="/tags">
-                        <Tags/>
-                    </Route>
-                    <Route path="/statistics">
-                        <Statistics/>
-                    </Route>
-                    <Redirect exact from='/' to="/money"/>
-                    <Route path="*">
-                        <NotMatch/>
-                    </Route>
-                </Switch>
-            </Router>
-        </AppWrapper>
-    );
+	return (
+		<AppWrapper>
+			<Router>
+				<Switch>
+					<Route path="/money">
+						<AddMoney/>
+					</Route>
+					<Route path="/tags">
+						<Tags/>
+					</Route>
+					<Route path="/statistics">
+						<Statistics/>
+					</Route>
+					<Redirect exact from='/' to="/money"/>
+					<Route path="*">
+						<NotMatch/>
+					</Route>
+				</Switch>
+			</Router>
+		</AppWrapper>
+	);
 }
 
 export default App;

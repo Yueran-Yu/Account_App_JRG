@@ -51,36 +51,36 @@ const Wrapper = styled.section`
 `
 
 export const NoteSection: React.FC = () => {
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
-    const [note, setNote] = useState('')
-    const refInput = useRef<HTMLInputElement>(null)!
-    const onBlur = () => {
-        if (refInput !== null && refInput && refInput.current) {
-            setNote(refInput.current.value)
-        }
-    }
+	const [startDate, setStartDate] = useState<Date | null>(new Date());
+	const [note, setNote] = useState('')
+	const refInput = useRef<HTMLInputElement>(null)!
+	const onBlur = () => {
+		if (refInput !== null && refInput && refInput.current) {
+			setNote(refInput.current.value)
+		}
+	}
 
-    return (
-        <Wrapper>
-            <label>
-                <span><Icon name='write'/></span>
-                <input
-                    type="text"
-                    placeholder="Add notes here"
-                    ref={refInput}
-                    defaultValue={note}
-                    onBlur={onBlur}/>
-            </label>
-            <DatePicker
-                className='date'
-                selected={startDate}
-                onChange={(startDate: Date | null) => setStartDate(startDate)}
-                dateFormat="dd/MMMM"
-                dateFormatCalendar={"MMM yyyy"}
-                minDate={subMonths(new Date(), 6)}
-                maxDate={addMonths(new Date(), 6)}
-                showMonthYearDropdown
-            />
-        </Wrapper>
-    )
+	return (
+		<Wrapper>
+			<label>
+				<span><Icon name='write'/></span>
+				<input
+					type="text"
+					placeholder="Add notes here"
+					ref={refInput}
+					defaultValue={note}
+					onBlur={onBlur}/>
+			</label>
+			<DatePicker
+				className='date'
+				selected={startDate}
+				onChange={(startDate: Date | null) => setStartDate(startDate)}
+				dateFormat="dd/MMMM"
+				dateFormatCalendar={"MMM yyyy"}
+				minDate={subMonths(new Date(), 6)}
+				maxDate={addMonths(new Date(), 6)}
+				showMonthYearDropdown
+			/>
+		</Wrapper>
+	)
 }

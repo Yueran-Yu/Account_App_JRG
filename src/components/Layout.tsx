@@ -14,14 +14,14 @@ const Main = styled.div`
 `
 
 const Layout = ({children, className}: any) => {
-    return (
-        <Wrapper>
-            <Main className={className}>
-                {children}
-            </Main>
-             <Nav/>
-        </Wrapper>
-    )
+	return (
+		<Wrapper>
+			<Main className={className}>
+				{children}
+			</Main>
+			<Nav/>
+		</Wrapper>
+	)
 }
 
 export default Layout;

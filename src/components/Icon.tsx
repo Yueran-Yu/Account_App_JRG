@@ -8,20 +8,20 @@ let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireCo
 
 
 try {
-    importAll(require.context('icons', true, /\.svg$/));
+	importAll(require.context('icons', true, /\.svg$/));
 } catch (error) {
-    console.log(error)
+	console.log(error)
 }
 
 
 type Props = {
-    name: string
+	name: string
 }
 
 export const Icon = ({name}: Props) => {
-    return (
-        <svg className='icon'>
-            <use xlinkHref={'#' + name}/>
-        </svg>
-    )
+	return (
+		<svg className='icon'>
+			<use xlinkHref={'#' + name}/>
+		</svg>
+	)
 }
