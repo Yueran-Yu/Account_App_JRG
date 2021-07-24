@@ -5,10 +5,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import {CategorySection} from '../components/AddMoney/CategorySection';
 import {TagsSection} from '../components/AddMoney/TagsSection';
-import {NoteSection} from '../components/AddMoney/NoteSections';
+import {NoteSection} from '../components/AddMoney/NoteSection';
 import {NumberPadSection} from "../components/AddMoney/NumberSection/NumberPadSection";
+import {DateSection} from "../components/AddMoney/DateSection";
 
 
+const NoteDate = styled.section`
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+`
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
@@ -18,16 +25,29 @@ const AddMoney = () => {
 	const [selected, setSelected] = useState({
 		tags: [] as string[],
 		note: '',
+		date: new Date() as (Date | null),
 		category: '-' as Category,
 		amount: 0
 	})
 
 	return (<MyLayout>
+		{selected.tags.join('.')}
+		<hr/>
+		{selected.note}
 		<CategorySection/>
+
 		<TagsSection
 			value={selected.tags}
 			onChange={tags => setSelected({...selected, tags: tags})}/>
-		<NoteSection/>
+
+		<NoteDate>
+			<NoteSection
+				value={selected.note}
+				onChange={(note) => {setSelected({...selected, note: note})}}/>
+
+			<DateSection value={selected.date}
+									 onDateChange={(date: (Date | null)) => {setSelected({...selected, date: date})}}/>
+		</NoteDate>
 		<NumberPadSection/>
 	</MyLayout>)
 }
