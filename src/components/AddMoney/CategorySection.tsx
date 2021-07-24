@@ -29,8 +29,12 @@ export const Wrapper = styled.section`
   }
 `
 
-export const CategorySection: React.FC = () => {
-	const [category, setCategory] = useState('-') // - means expense, + means income
+type Props = {
+	value: '-' | '+'
+	onChange: (value: '-' | '+') => void
+}
+export const CategorySection: React.FC<Props> = (props) => {
+	const category = props.value
 	const categoryMap = {'-': 'Expense', '+': 'Income'}
 	type Keys = keyof typeof categoryMap
 	// 新的类型： 字符串的联合
@@ -45,7 +49,7 @@ export const CategorySection: React.FC = () => {
 					{
 						categoryList.map(c =>
 							<li key={c}
-									onClick={() => {setCategory(c)}}
+									onClick={() => {props.onChange(c)}}
 									className={category === c ? 'selected' : ''}>
 								{categoryMap[c]}
 							</li>)

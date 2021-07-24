@@ -2,7 +2,11 @@ import React, {useState} from 'react';
 import {Icon} from "../../Icon";
 import {Wrapper} from './NumberPadSection.styles';
 
-export const NumberPadSection = () => {
+type Props = {
+	value: number
+	onChange: (value: number) => void
+}
+export const NumberPadSection: React.FC<Props> = (props) => {
 	const [output, _setOutput] = useState('0')
 	const [result, _setResult] = useState('0')
 	const [temp, _setTemp] = useState('')
@@ -64,6 +68,7 @@ export const NumberPadSection = () => {
 				case '7':
 				case '8':
 				case '9':
+					setBtn('=')
 					if (output.length > 0 && output !== '0') {
 						if (output.charAt(output.length - 1) === '0') {
 							setOutput(output.slice(0, -1) + text)
@@ -178,7 +183,7 @@ export const NumberPadSection = () => {
 				<button>C</button>
 				<button>0</button>
 				<button>.</button>
-				<button className='ok'>{btn}</button>
+				<button className='ok' >{btn}</button>
 			</div>
 		</Wrapper>
 	)

@@ -34,7 +34,9 @@ const AddMoney = () => {
 		{selected.tags.join('.')}
 		<hr/>
 		{selected.note}
-		<CategorySection/>
+		<CategorySection
+			value={selected.category}
+			onChange={category => { setSelected({...selected, category: category})}}/>
 
 		<TagsSection
 			value={selected.tags}
@@ -48,7 +50,10 @@ const AddMoney = () => {
 			<DateSection value={selected.date}
 									 onDateChange={(date: (Date | null)) => {setSelected({...selected, date: date})}}/>
 		</NoteDate>
-		<NumberPadSection/>
+		<NumberPadSection
+			value={selected.amount}
+			onChange={amount => {setSelected({...selected, amount: amount})}}
+		/>
 	</MyLayout>)
 }
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {useState} from 'react';
+import React from 'react';
 import DatePicker from "react-datepicker";
 
 
@@ -25,7 +25,8 @@ export const DateSection: React.FC<Props> = (props) => {
 	const date = props.value
 	const onChange = (e: Date | null) => {
 		console.log("********************")
-		console.log(e.)
+		console.log(e)
+		// props.onDateChange(e)
 	}
 	return (
 		<Wrapper>
