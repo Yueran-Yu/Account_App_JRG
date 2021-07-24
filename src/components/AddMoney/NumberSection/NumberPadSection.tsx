@@ -166,9 +166,11 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 			</div>
 			<div className='pad clearfix' onClick={onClickButtonWrapper}>
 				{/* button{$}*16 */}
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
+
+				<button>7</button>
+				<button>8</button>
+				<button>9</button>
+
 				<button>
 					<Icon name='delete'/>
 				</button>
@@ -176,9 +178,9 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 				<button>5</button>
 				<button>6</button>
 				<button>+</button>
-				<button>7</button>
-				<button>8</button>
-				<button>9</button>
+				<button>1</button>
+				<button>2</button>
+				<button>3</button>
 				<button>-</button>
 				<button>C</button>
 				<button>0</button>
