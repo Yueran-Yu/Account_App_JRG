@@ -4,7 +4,8 @@ import {Wrapper} from './NumberPadSection.styles';
 
 type Props = {
 	value: number
-	onOk: (value: number) => void
+	onChange: (value: number) => void
+	onOk?: () => void
 }
 export const NumberPadSection: React.FC<Props> = (props) => {
 	const [output, _setOutput] = useState('0')
@@ -134,18 +135,12 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'OK':
-					let r = 0
-					if (output.length === 0) {
-						if (result.length === 0) return
-
-						r = parseFloat(result)
-					} else {
-						//setResult(calc(output))
-						r = parseFloat(calc(output))
-					}
+					if (result === '0') return
+					if (props.onOk) props.onOk()
 					setOutput('')
 					setTemp('')
-					props.onOk(r)
+					setResult('0')
+
 					break;
 				case '=':
 					if (lastChar === '+' || lastChar === '-') {
@@ -153,6 +148,7 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					} else {
 						setResult(calc(output))
 					}
+					props.onChange(parseFloat(result))
 					setBtn('OK')
 					setOutput('')
 					setTemp('')
@@ -160,7 +156,8 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 				default:
 					break;
 			}
-		} catch (e) {
+		} catch
+			(e) {
 			console.log(e)
 		}
 	}
@@ -193,7 +190,7 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 				<button>C</button>
 				<button>0</button>
 				<button>.</button>
-				<button className='ok' >{btn}</button>
+				<button className='ok'>{btn}</button>
 			</div>
 		</Wrapper>
 	)

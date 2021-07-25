@@ -36,7 +36,8 @@ const AddMoney = () => {
 		{selected.note}
 		<hr/>
 		<p>
-			{selected.date ? `${selected.date.getFullYear()}-${selected.date.getMonth() + 1}-${selected.date.getDate()}` : ""}
+			{selected.date ? `${selected.date.getFullYear()}/${selected.date.getMonth() + 1}/${selected.date.getDate()}/
+				${selected.date.getHours()}:${selected.date.getMinutes()}:${selected.date.getSeconds()}` : ""}
 		</p>
 		<p>{selected.amount}</p>
 
@@ -58,7 +59,8 @@ const AddMoney = () => {
 		</NoteDate>
 		<NumberPadSection
 			value={selected.amount}
-			onOk={amount => {setSelected({...selected, amount: amount})}}
+			onChange={amount => {setSelected({...selected, amount: amount})}}
+			onOk={() => {console.log("all data collected!")}}
 		/>
 	</MyLayout>)
 }
