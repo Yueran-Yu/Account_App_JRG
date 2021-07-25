@@ -26,7 +26,7 @@ export const DateSection: React.FC<Props> = (props) => {
 	const onChange = (e: Date | null) => {
 		console.log("********************")
 		console.log(e)
-		// props.onDateChange(e)
+		props.onDateChange(e)
 	}
 	return (
 		<Wrapper>

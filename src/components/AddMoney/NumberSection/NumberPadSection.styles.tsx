@@ -22,11 +22,9 @@ export const Wrapper = styled.section`
       padding-bottom: 6px;
     }
   }
-
   .pad {
     display: flex;
     flex-wrap: wrap;
-    cursor: auto;
 
     > button {
       width: 25%;
@@ -38,6 +36,7 @@ export const Wrapper = styled.section`
       border-left: none;
       font-size: 1.5rem;
       color: #888888;
+      cursor: pointer;
 
       .icon {
         font-size: 1.2rem;

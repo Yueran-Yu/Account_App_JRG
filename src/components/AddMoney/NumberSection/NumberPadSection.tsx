@@ -4,7 +4,7 @@ import {Wrapper} from './NumberPadSection.styles';
 
 type Props = {
 	value: number
-	onChange: (value: number) => void
+	onOk: (value: number) => void
 }
 export const NumberPadSection: React.FC<Props> = (props) => {
 	const [output, _setOutput] = useState('0')
@@ -134,10 +134,18 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'OK':
-					if (output.length === 0) return
-					setResult(calc(output))
+					let r = 0
+					if (output.length === 0) {
+						if (result.length === 0) return
+
+						r = parseFloat(result)
+					} else {
+						//setResult(calc(output))
+						r = parseFloat(calc(output))
+					}
 					setOutput('')
 					setTemp('')
+					props.onOk(r)
 					break;
 				case '=':
 					if (lastChar === '+' || lastChar === '-') {

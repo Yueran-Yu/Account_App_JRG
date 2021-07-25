@@ -34,6 +34,12 @@ const AddMoney = () => {
 		{selected.tags.join('.')}
 		<hr/>
 		{selected.note}
+		<hr/>
+		<p>
+			{selected.date ? `${selected.date.getFullYear()}-${selected.date.getMonth() + 1}-${selected.date.getDate()}` : ""}
+		</p>
+		<p>{selected.amount}</p>
+
 		<CategorySection
 			value={selected.category}
 			onChange={category => { setSelected({...selected, category: category})}}/>
@@ -52,7 +58,7 @@ const AddMoney = () => {
 		</NoteDate>
 		<NumberPadSection
 			value={selected.amount}
-			onChange={amount => {setSelected({...selected, amount: amount})}}
+			onOk={amount => {setSelected({...selected, amount: amount})}}
 		/>
 	</MyLayout>)
 }
