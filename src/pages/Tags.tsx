@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import {useTags} from 'useTags';
 import Layout from "../components/Layout";
 import {Icon} from "../components/Icon";
+import {Link} from 'react-router-dom';
 
 const TagsList = styled.ol`
   font-size: 16px;
   background: white;
 
-  > li {
+  > a > li {
+    display: flex;
     border-bottom: 1px solid #d5d5d9;
     line-height: 20px;
-    padding: 12px 0;
+    padding: 8px 0;
     margin: 0 16px;
-    display: flex;
     justify-content: space-between;
     align-items: center;
   }
@@ -40,10 +41,12 @@ const Tags = () => {
 	return (
 		<Layout>
 			<TagsList>
-				{tags.map(tag => <li key={tag}>
-					<span className="oneLine">{tag}</span>
-					<Icon name='right'/>
-				</li>)}
+				{tags.map(tag =>
+					<Link to={'/tags/' + tag}>
+						<li key={tag}>
+							<span className="oneLine">{tag}</span><Icon name='right'/>
+						</li>
+					</Link>)}
 			</TagsList>
 			<Center>
 				<Button>New Tag</Button>

@@ -6,6 +6,7 @@ import AddMoney from 'pages/AddMoney';
 import Statistics from 'pages/Statistics';
 import {NotMatch} from 'pages/NotMatch';
 import styled from 'styled-components';
+import {EditTag} from "./pages/EditTag";
 
 const AppWrapper = styled.div`
   color: #6d6c6c;
@@ -19,8 +20,11 @@ function App() {
 					<Route path="/money">
 						<AddMoney/>
 					</Route>
-					<Route path="/tags">
+					<Route exact path="/tags">
 						<Tags/>
+					</Route>
+					<Route path="/tags/:tag">
+						<EditTag/>
 					</Route>
 					<Route path="/statistics">
 						<Statistics/>
