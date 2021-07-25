@@ -21,38 +21,35 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 			x = x.slice(0, 10)
 			if (x.length > 9) alert("The number is long.")
 		}
-		if (x.length === 0) {
-			x = ''
-		}
+		if (x.length === 0) x = ''
 		_setOutput(x)
 	}
 
 	const setTemp = (x: string) => {
-		if (x.length > 9) {
-			_setTemp(x.slice(0, 9))
-		} else {
-			_setTemp(x)
-		}
+		x.length > 9 ? _setTemp(x.slice(0, 9)) : _setTemp(x)
 	}
 	const setResult = (x: string) => {
-		if (x.length > 9) {
-			_setResult(x.slice(0, 9))
-		} else {
-			_setResult(x)
-		}
+		x.length > 9 ? _setResult(x.slice(0, 9)) : _setResult(x)
 	}
 
-	const isANumber = (c: string) => {
-		return c >= '0' && c <= '9'
-	}
+	const isANumber = (c: string) => c >= '0' && c <= '9'
 
 	const calc = (value: string) => {
 		if (value !== '') {
+			// replace() is used to truncate trailing "0"
 			return eval(value).toFixed(9).toString().replace(/(\.0*|(?<=(\..*))0*)$/, '')
 		} else {
 			return '0'
 		}
 	}
+
+	const setResultOutputTemp = (result: string, output: string, temp = '') => {
+		setResult(result)
+		setOutput(output)
+		setTemp(temp)
+	}
+
+
 	const onClickButtonWrapper = (e: React.MouseEvent) => {
 		const text = (e.target as HTMLButtonElement).textContent
 		if (text === null) {return}
@@ -72,24 +69,19 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					setBtn('=')
 					if (output.length > 0 && output !== '0') {
 						if (output.charAt(output.length - 1) === '0') {
-							setOutput(output.slice(0, -1) + text)
-							setTemp(text)
-							setResult(calc(output.slice(0, -1) + text))
+							setResultOutputTemp(calc(output.slice(0, -1) + text), output.slice(0, -1) + text, text)
 						} else {
-							setOutput(output + text)
-							setTemp(temp + text)
-							setResult(calc(output + text))
+							setResultOutputTemp(calc(output + text), output + text, temp + text)
 						}
 					} else {
-						setOutput(text)
-						setTemp(text)
-						setResult(calc(text))
+						setResultOutputTemp(calc(text), text, text)
 					}
 					break;
 				case '':
 					if (output.length > 0) {
 						setOutput(output.slice(0, -1))
-						if (output.charAt(output.length - 2) === '+' || output.charAt(output.length - 2) === '-') {
+						const lastSecChar = output.charAt(output.length - 2)
+						if (lastSecChar === '+' || lastSecChar === '-') {
 							setResult(calc(output.slice(0, -2)))
 						} else {
 							setResult(calc(output.slice(0, -1)))
@@ -112,9 +104,7 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'C':
-					setOutput('0')
-					setTemp('')
-					setResult('0')
+					setResultOutputTemp('0', '0', '')
 					break;
 				case '.':
 					if (output.length > 0 && output !== '0') {
@@ -137,10 +127,8 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 				case 'OK':
 					if (result === '0') return
 					if (props.onOk) props.onOk()
-					setOutput('')
-					setTemp('')
-					setResult('0')
 
+					setResultOutputTemp('0', '', '')
 					break;
 				case '=':
 					if (lastChar === '+' || lastChar === '-') {

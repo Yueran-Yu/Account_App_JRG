@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React from 'react';
 import DatePicker from "react-datepicker";
 
-
 const Wrapper = styled.div`
   & .date {
     text-align: center;
@@ -17,15 +16,13 @@ const Wrapper = styled.div`
   }
 `
 type Props = {
-	value: Date | null
-	onDateChange: (dateValue: Date | null) => void
+	value: Date
+	onDateChange: (dateValue: Date) => void
 }
 
 export const DateSection: React.FC<Props> = (props) => {
 	const date = props.value
-	const onChange = (e: Date | null) => {
-		console.log("********************")
-		console.log(e)
+	const onChange = (e: Date) => {
 		props.onDateChange(e)
 	}
 	return (

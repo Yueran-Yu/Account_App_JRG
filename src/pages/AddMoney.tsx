@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Layout from "../components/Layout";
-import "react-datepicker/dist/react-datepicker.css";
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import {CategorySection} from '../components/AddMoney/CategorySection';
 import {TagsSection} from '../components/AddMoney/TagsSection';
 import {NoteSection} from '../components/AddMoney/NoteSection';
@@ -25,10 +23,16 @@ const AddMoney = () => {
 	const [selected, setSelected] = useState({
 		tags: [] as string[],
 		note: '',
-		date: new Date() as (Date | null),
+		date: new Date(),
 		category: '-' as Category,
 		amount: 0
 	})
+
+	// get the type of selected Object by typeof method
+	type Selected = typeof selected
+	const onChangeTemplate = (obj: Partial<Selected>) => {
+		setSelected({...selected, ...obj})
+	}
 
 	return (<MyLayout>
 		{selected.tags.join('.')}
@@ -43,23 +47,23 @@ const AddMoney = () => {
 
 		<CategorySection
 			value={selected.category}
-			onChange={category => { setSelected({...selected, category: category})}}/>
+			onChange={category => onChangeTemplate({category: category})}/>
 
 		<TagsSection
 			value={selected.tags}
-			onChange={tags => setSelected({...selected, tags: tags})}/>
+			onChange={tags => onChangeTemplate({tags})}/>
 
 		<NoteDate>
 			<NoteSection
 				value={selected.note}
-				onChange={(note) => {setSelected({...selected, note: note})}}/>
+				onChange={note => onChangeTemplate({note})}/>
 
 			<DateSection value={selected.date}
-									 onDateChange={(date: (Date | null)) => {setSelected({...selected, date: date})}}/>
+									 onDateChange={(date: Date) => onChangeTemplate({date: date})}/>
 		</NoteDate>
 		<NumberPadSection
 			value={selected.amount}
-			onChange={amount => {setSelected({...selected, amount: amount})}}
+			onChange={amount => {onChangeTemplate({amount})}}
 			onOk={() => {console.log("all data collected!")}}
 		/>
 	</MyLayout>)
