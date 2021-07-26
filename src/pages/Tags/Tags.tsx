@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTags} from 'useTags';
-import Layout from "../components/Layout";
-import {Icon} from "../components/Icon";
+import {useTags} from 'pages/Tags/useTags';
+import Layout from "../../components/Layout";
+import {Icon} from "../../components/Icon";
 import {Link} from 'react-router-dom';
 
 const TagsList = styled.ol`
@@ -37,14 +37,15 @@ const Center = styled.div`
 `
 
 const Tags = () => {
-	const {tags, setTags} = useTags()
+	const {tags} = useTags()
+
 	return (
 		<Layout>
 			<TagsList>
 				{tags.map(tag =>
-					<Link to={'/tags/' + tag}>
-						<li key={tag}>
-							<span className="oneLine">{tag}</span><Icon name='right'/>
+					<Link to={'/tags/' + tag.id}>
+						<li key={tag.id}>
+							<span className="oneLine">{tag.name}</span><Icon name='right'/>
 						</li>
 					</Link>)}
 			</TagsList>

@@ -1,12 +1,12 @@
 import React from 'react';
 // hashRouter no need to use the backend server
 import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import Tags from 'pages/Tags';
+import Tags from 'pages/Tags/Tags';
 import AddMoney from 'pages/AddMoney';
 import Statistics from 'pages/Statistics';
 import {NotMatch} from 'pages/NotMatch';
 import styled from 'styled-components';
-import {EditTag} from "./pages/EditTag";
+import {EditTag} from "./pages/Tags/EditTag";
 
 const AppWrapper = styled.div`
   color: #6d6c6c;

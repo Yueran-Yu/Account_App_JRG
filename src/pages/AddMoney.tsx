@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Layout from "../components/Layout";
-import {CategorySection} from '../components/AddMoney/CategorySection';
-import {TagsSection} from '../components/AddMoney/TagsSection';
-import {NoteSection} from '../components/AddMoney/NoteSection';
+import {CategorySection} from '../components/AddMoney/CategorySection/CategorySection';
+import {TagsSection} from '../components/AddMoney/TagsSection/TagsSection';
+import {NoteSection} from '../components/AddMoney/NoteSection/NoteSection';
 import {NumberPadSection} from "../components/AddMoney/NumberSection/NumberPadSection";
-import {DateSection} from "../components/AddMoney/DateSection";
+import {DateSection} from "../components/AddMoney/DateSection/DateSection";
 
 
 const NoteDate = styled.section`
@@ -21,7 +21,7 @@ const MyLayout = styled(Layout)`
 type Category = '-' | '+'
 const AddMoney = () => {
 	const [selected, setSelected] = useState({
-		tags: [] as string[],
+		tagsId: [] as number[],
 		note: '',
 		date: new Date(),
 		category: '-' as Category,
@@ -44,8 +44,8 @@ const AddMoney = () => {
 			onChange={category => onChangeTemplate({category: category})}/>
 
 		<TagsSection
-			value={selected.tags}
-			onChange={tags => onChangeTemplate({tags})}/>
+			value={selected.tagsId}
+			onChange={tagsId => onChangeTemplate({tagsId})}/>
 
 		<NoteDate>
 			<NoteSection

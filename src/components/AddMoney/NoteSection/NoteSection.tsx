@@ -1,32 +1,6 @@
-import styled from 'styled-components';
 import React, {useRef} from 'react';
-import {Icon} from "../Icon";
-
-const Wrapper = styled.label`
-  display: flex;
-  align-items: center;
-  width: 80%;
-  > span {
-    margin-right: 6px;
-    white-space: nowrap;
-
-    .icon {
-      fill: #5678de;
-    }
-  }
-
-  input {
-    display: block;
-    width: 100%;
-    background: none;
-    border: none;
-
-    ::placeholder {
-      color: #bebebe;
-      font-family: fantasy;
-    }
-  }
-`
+import {Icon} from "../../Icon";
+import {Wrapper} from './NoteSection.styles';
 
 type Props = {
 	value: string
