@@ -1,6 +1,8 @@
+/* eslint no-eval: 0 */
 import React, {useState} from 'react';
 import {Icon} from "../../Icon";
 import {Wrapper} from './NumberPadSection.styles';
+
 
 type Props = {
 	value: number
@@ -48,7 +50,6 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 		setOutput(output)
 		setTemp(temp)
 	}
-
 
 	const onClickButtonWrapper = (e: React.MouseEvent) => {
 		const text = (e.target as HTMLButtonElement).textContent
