@@ -1,6 +1,7 @@
 import React from 'react';
 import {useTags} from "../../../pages/Tags/useTags";
 import {Wrapper} from "./TagsSection.styles";
+import {CreateId} from "../../../lib/createId";
 
 type Props = {
 	value: number[]
@@ -12,19 +13,18 @@ export const TagsSection: React.FC<Props> = (props) => {
 	const onAddTag = () => {
 		const tagName = window.prompt('The new Tag name is:')
 		if (tagName !== null) {
-			const id = new Date().getTime()
-			console.log(id)
+			const id = CreateId()
 			setTags([...tags, {id: id, name: tagName}])
 		}
 	}
 	const getSelectedTagsClass = (tagId: number) => selectedTagsId.indexOf(tagId) >= 0 ? 'selected' : ''
-	const onToggleTag = (currentTagId: number) => {
-		const index = selectedTagsId.indexOf(currentTagId)
+	const onToggleTag = (currentTag: number) => {
+		const index = selectedTagsId.indexOf(currentTag)
 		if (index >= 0) {
-			props.onChange(selectedTagsId.filter(id => id !== currentTagId))
+			props.onChange(selectedTagsId.filter(id => id !== currentTag))
 			// If currentTag has been selected before, copy all tags other than the currentTag
 		} else {
-			props.onChange([...selectedTagsId, currentTagId])
+			props.onChange([...selectedTagsId, currentTag])
 		}
 	}
 
