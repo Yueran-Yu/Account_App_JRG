@@ -26,7 +26,15 @@ const InputWrapper = styled.div`
   background: white;
   margin-top: 16px;
   padding: 5px 20px 5px 0;
+
+  .editTag {
+    font-weight: 150;
+    color: grey;
+    font-size: 16px;
+    line-height: 16px;
+  }
 `
+
 export const EditTag: React.FC = () => {
 	const {tags} = useTags()
 	const {tagId} = useParams<Params>()
@@ -41,10 +49,11 @@ export const EditTag: React.FC = () => {
 				<Icon/>
 			</Topbar>
 			<InputWrapper>
-				<InputForm
-					label='tagName'
-					type='text'
-					placeholder='Tag Name'>
+				<InputForm className='editTag'
+									 label='tagName'
+									 type='text'
+									 value={tag.name}
+									 placeholder='Tag Name'>
 					<Icon name='write'/>
 				</InputForm>
 			</InputWrapper>
