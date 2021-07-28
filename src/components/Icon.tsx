@@ -15,13 +15,13 @@ try {
 
 
 type Props = {
-	name: string
+	name?: string
 }
 
 export const Icon = ({name}: Props) => {
 	return (
 		<svg className='icon'>
-			<use xlinkHref={'#' + name}/>
+			{name && <use xlinkHref={'#' + name}/>}
 		</svg>
 	)
 }

@@ -35,6 +35,7 @@ const AddMoney = () => {
 	}
 
 	return (<MyLayout>
+		{selected.note}
 		{/*<p>*/}
 		{/*	{selected.date ? `${selected.date.getFullYear()}/${selected.date.getMonth() + 1}/${selected.date.getDate()}/*/}
 		{/*		${selected.date.getHours()}:${selected.date.getMinutes()}:${selected.date.getSeconds()}` : ""}*/}

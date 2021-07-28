@@ -4,12 +4,13 @@ import {useTags} from 'pages/Tags/useTags';
 import Layout from "../../components/Layout";
 import {Icon} from "../../components/Icon";
 import {Link} from 'react-router-dom';
+import {Button} from "../../components/Button";
 
 const TagsList = styled.ol`
   font-size: 16px;
   background: white;
   font-weight: 150;
- 
+
   > a > li {
     display: flex;
     border-bottom: 1px solid #d5d5d9;
@@ -24,15 +25,6 @@ const TagsList = styled.ol`
       font-size: 12px;
     }
   }
-`
-
-const Button = styled.button`
-  font-size: 18px;
-  border: none;
-  padding: 8px 12px;
-  background: #5678de;
-  color: white;
-  border-radius: 3px;
 `
 
 const Center = styled.div`

@@ -1,6 +1,6 @@
-import React, {useRef} from 'react';
+import React, {ChangeEventHandler} from 'react';
 import {Icon} from "../../Icon";
-import {Wrapper} from './NoteSection.styles';
+import {InputForm} from "../../InputForm";
 
 type Props = {
 	value: string
@@ -8,22 +8,19 @@ type Props = {
 }
 export const NoteSection: React.FC<Props> = (props) => {
 	const note = props.value
-	const refInput = useRef<HTMLInputElement>(null)!
-	const onBlur = () => {
-		if (refInput !== null && refInput && refInput.current) {
-			props.onChange(refInput.current.value)
-		}
+	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+		console.log(e.target.value)
+		props.onChange(e.target.value)
 	}
 
 	return (
-		<Wrapper>
-				<span><Icon name='write'/></span>
-				<input
-					type="text"
-					placeholder="Add notes here"
-					ref={refInput}
-					defaultValue={note}
-					onBlur={onBlur}/>
-		</Wrapper>
+		<InputForm
+			type="text"
+			placeholder="Add notes here"
+			value={note}
+			onChange={onChange}
+			label='right'>
+			<Icon name='write'/>
+		</InputForm>
 	)
 }
