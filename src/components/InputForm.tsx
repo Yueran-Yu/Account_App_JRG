@@ -4,7 +4,7 @@ import React from 'react';
 const Label = styled.label`
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 100%;
 
   > span {
     margin-right: 6px;

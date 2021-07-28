@@ -5,6 +5,7 @@ import Layout from "../../components/Layout";
 import {Icon} from "../../components/Icon";
 import {Link} from 'react-router-dom';
 import {Button} from "../../components/Button";
+import {Center} from "../../components/Center";
 
 const TagsList = styled.ol`
   font-size: 16px;
@@ -13,7 +14,7 @@ const TagsList = styled.ol`
 
   > a > li {
     display: flex;
-    border-bottom: 1px solid #d5d5d9;
+    border-bottom: 1px dashed #d5d5d9;
     line-height: 20px;
     padding: 8px 0;
     margin: 0 16px;
@@ -25,13 +26,6 @@ const TagsList = styled.ol`
       font-size: 12px;
     }
   }
-`
-
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 56px;
 `
 
 const Tags = () => {

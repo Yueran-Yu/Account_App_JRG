@@ -5,6 +5,8 @@ import Layout from "../../components/Layout";
 import {Icon} from "../../components/Icon";
 import {Button} from 'components/Button';
 import styled from 'styled-components';
+import {InputForm} from "../../components/InputForm";
+import {Center} from "../../components/Center";
 
 
 type Params = {
@@ -17,7 +19,13 @@ const Topbar = styled.header`
   line-height: 20px;
   padding: 14px;
   background: white;
-	align-items: center;
+  align-items: center;
+`
+
+const InputWrapper = styled.div`
+  background: white;
+  margin-top: 16px;
+  padding: 5px 20px 5px 0;
 `
 export const EditTag: React.FC = () => {
 	const {tags} = useTags()
@@ -31,17 +39,18 @@ export const EditTag: React.FC = () => {
 				<Icon name='left'/>
 				<span>Edit</span>
 				<Icon/>
-
 			</Topbar>
-			<label>
-				<span>Note</span>
-				<input
-					type="text"
-					placeholder="Tag Name"/>
-			</label>
-			<div>
+			<InputWrapper>
+				<InputForm
+					label='tagName'
+					type='text'
+					placeholder='Tag Name'>
+					<Icon name='write'/>
+				</InputForm>
+			</InputWrapper>
+			<Center>
 				<Button>Remove</Button>
-			</div>
+			</Center>
 		</Layout>
 	)
 }
