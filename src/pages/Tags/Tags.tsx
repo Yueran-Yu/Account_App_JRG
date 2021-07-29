@@ -25,8 +25,7 @@ const TagsList = styled.ol`
       fill: grey;
       font-size: 12px;
     }
-  }
-`
+  }`
 
 const Tags = () => {
 	const {tags} = useTags()

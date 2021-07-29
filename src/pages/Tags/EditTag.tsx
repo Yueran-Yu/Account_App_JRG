@@ -36,11 +36,10 @@ const InputWrapper = styled.div`
 `
 
 export const EditTag: React.FC = () => {
-	const {tags} = useTags()
+	const {tags, findTag} = useTags()
 	const {tagId} = useParams<Params>()
-	const tag = tags.filter(t => t.id === parseInt(tagId))[0]
-	// const {findTag} = useTags();
-	// const tag = findTag(parseInt(tagId))
+	// const tag = tags.filter(t => t.id === parseInt(tagId))[0]
+	const tag = findTag(parseInt(tagId))
 	return (
 		<Layout>
 			<Topbar>
@@ -53,7 +52,8 @@ export const EditTag: React.FC = () => {
 									 label='tagName'
 									 type='text'
 									 value={tag.name}
-									 placeholder='Tag Name'>
+									 placeholder='Tag Name'
+									 onChange={() => console.log('kk')}>
 					<Icon name='write'/>
 				</InputForm>
 			</InputWrapper>
