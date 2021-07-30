@@ -24,25 +24,15 @@ export const useTags = () => {
 	}
 
 	const updateTag = (id: number, obj: { name: string }) => {
-		const index = findTagIndex(id)
-		// deep-clone get tagsClone
-		const tagClone = JSON.parse(JSON.stringify(tags))
-		// replace the tags copy with new name value
-		tagClone.splice(index, 1, {id: id, name: obj.name})
-		setTags(tagClone)
+		setTags(tags.map(tag => tag.id === id ? {id: id, name: obj.name} : tag))
 	}
 
 	const deleteTag = (id: number) => {
-		const index = findTag(id)
-		const tagClone = JSON.parse(JSON.stringify(tags))
-		// replace the tags copy with new name value
-		tagClone.splice(index, 1)
-		setTags(tagClone)
-
+		setTags(tags.filter(tag => tag.id !== id))
 	}
 	return {
 		tags: tags,
-		setTags: setTags,
+		setTags,
 		findTag,
 		updateTag,
 		deleteTag
