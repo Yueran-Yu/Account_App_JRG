@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {useTags} from "./useTags";
 import Layout from "../../components/Layout";
 import {Icon} from "../../components/Icon";
@@ -40,6 +40,10 @@ export const EditTag: React.FC = () => {
 	const {tagId} = useParams<Params>()
 	// const tag = tags.filter(t => t.id === parseInt(tagId))[0]
 	const tag = findTag(parseInt(tagId))
+	const history= useHistory()
+	const onClickBack = () => {
+		history.goBack()
+	}
 
 	const tagContent = (tag: { id: number; name: string }) => (
 		<div>
@@ -68,7 +72,7 @@ export const EditTag: React.FC = () => {
 	return (
 		<Layout>
 			<Topbar>
-				<Icon name='left'/>
+				<Icon name='left' className='hoist' onClick={onClickBack}/>
 				<span>Edit</span>
 				<Icon/>
 			</Topbar>
