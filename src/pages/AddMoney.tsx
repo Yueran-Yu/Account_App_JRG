@@ -6,6 +6,7 @@ import {TagsSection} from '../components/AddMoney/TagsSection/TagsSection';
 import {NoteSection} from '../components/AddMoney/NoteSection/NoteSection';
 import {NumberPadSection} from "../components/AddMoney/NumberSection/NumberPadSection";
 import {DateSection} from "../components/AddMoney/DateSection/DateSection";
+import {useCollectedData} from "../components/hooks/useCollectedData";
 
 
 const NoteDate = styled.section`
@@ -19,6 +20,7 @@ const MyLayout = styled(Layout)`
   flex-direction: column;
 `
 type Category = '-' | '+'
+
 const AddMoney = () => {
 	const [selected, setSelected] = useState({
 		tagsId: [] as number[],
@@ -33,9 +35,12 @@ const AddMoney = () => {
 	const onChangeTemplate = (obj: Partial<Selected>) => {
 		setSelected({...selected, ...obj})
 	}
-
+	const {addCollectedData} = useCollectedData()
+	const submit = () => {
+		addCollectedData(selected)
+	}
 	return (<MyLayout>
-		{selected.note}
+		{JSON.stringify(selected)}
 		{/*<p>*/}
 		{/*	{selected.date ? `${selected.date.getFullYear()}/${selected.date.getMonth() + 1}/${selected.date.getDate()}/*/}
 		{/*		${selected.date.getHours()}:${selected.date.getMinutes()}:${selected.date.getSeconds()}` : ""}*/}
@@ -59,7 +64,7 @@ const AddMoney = () => {
 		<NumberPadSection
 			value={selected.amount}
 			onChange={amount => {onChangeTemplate({amount})}}
-			onOk={() => {console.log("all data collected!")}}
+			onOk={submit}
 		/>
 	</MyLayout>)
 }

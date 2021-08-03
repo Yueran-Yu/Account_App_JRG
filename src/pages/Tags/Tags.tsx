@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useTags} from 'pages/Tags/useTags';
+import {useTags} from 'components/hooks/useTags';
 import Layout from "../../components/Layout";
 import {Icon} from "../../components/Icon";
 import {Link} from 'react-router-dom';
@@ -29,7 +29,6 @@ const TagsList = styled.ol`
 
 const Tags = () => {
 	const {tags, addTag} = useTags()
-	console.log("use tags")
 	return (
 		<Layout>
 			<TagsList>

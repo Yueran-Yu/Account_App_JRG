@@ -1,5 +1,5 @@
 import React from 'react';
-import {useTags} from "../../../pages/Tags/useTags";
+import {useTags} from "../../hooks/useTags";
 import {Wrapper} from "./TagsSection.styles";
 
 type Props = {
@@ -8,7 +8,6 @@ type Props = {
 }
 export const TagsSection: React.FC<Props> = (props) => {
 	const {tags, addTag} = useTags()
-	console.log('use tags')
 	const selectedTagsId = props.value
 	const getSelectedTagsClass = (tagId: number) => selectedTagsId.indexOf(tagId) >= 0 ? 'selected' : ''
 	const onToggleTag = (currentTag: number) => {

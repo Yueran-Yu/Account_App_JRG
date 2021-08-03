@@ -1,6 +1,7 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
 import {Wrapper} from "./DateSection.styles";
+import 'react-datepicker/dist/react-datepicker.css';
 
 type Props = {
 	value: Date
