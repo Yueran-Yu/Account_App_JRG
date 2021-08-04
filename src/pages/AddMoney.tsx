@@ -8,7 +8,6 @@ import {NumberPadSection} from "../components/AddMoney/NumberSection/NumberPadSe
 import {DateSection} from "../components/AddMoney/DateSection/DateSection";
 import {useCollectedData} from "../components/hooks/useCollectedData";
 
-
 const NoteDate = styled.section`
   font-size: 14px;
   display: flex;
@@ -21,30 +20,33 @@ const MyLayout = styled(Layout)`
 `
 type Category = '-' | '+'
 
+const defaultFormData = {
+	tagsId: [] as number[],
+	note: '',
+	date: new Date(),
+	category: '-' as Category,
+	amount: 0
+}
 const AddMoney = () => {
-	const [selected, setSelected] = useState({
-		tagsId: [] as number[],
-		note: '',
-		date: new Date(),
-		category: '-' as Category,
-		amount: 0
-	})
+	const [selected, setSelected] = useState(defaultFormData)
 
 	// get the type of selected Object by typeof method
 	type Selected = typeof selected
 	const onChangeTemplate = (obj: Partial<Selected>) => {
 		setSelected({...selected, ...obj})
 	}
-	const {addCollectedData} = useCollectedData()
+	const {collectedData, addCollectedData} = useCollectedData()
 	const submit = () => {
 		addCollectedData(selected)
+		setSelected(defaultFormData)
+		alert('Saved Successfully')
 	}
 	return (<MyLayout>
 		{JSON.stringify(selected)}
-		{/*<p>*/}
-		{/*	{selected.date ? `${selected.date.getFullYear()}/${selected.date.getMonth() + 1}/${selected.date.getDate()}/*/}
-		{/*		${selected.date.getHours()}:${selected.date.getMinutes()}:${selected.date.getSeconds()}` : ""}*/}
-		{/*</p>*/}
+		<p>
+			{selected.date ? `${selected.date.getFullYear()}/${selected.date.getMonth() + 1}/${selected.date.getDate()}/
+				${selected.date.getHours()}:${selected.date.getMinutes()}:${selected.date.getSeconds()}` : ""}
+		</p>
 		<CategorySection
 			value={selected.category}
 			onChange={category => onChangeTemplate({category: category})}/>

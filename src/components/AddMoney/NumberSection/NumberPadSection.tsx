@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import {Icon} from "../../Icon";
 import {Wrapper} from './NumberPadSection.styles';
 
-
 type Props = {
 	value: number
 	onChange: (value: number) => void
@@ -126,9 +125,8 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'OK':
-					if (result === '0') return
+					if (output !== '0') return
 					if (props.onOk) props.onOk()
-
 					setResultOutputTemp('0', '', '')
 					break;
 				case '=':
