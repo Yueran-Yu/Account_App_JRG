@@ -27,6 +27,9 @@ const defaultFormData = {
 	category: '-' as Category,
 	amount: 0
 }
+
+
+
 const AddMoney = () => {
 	const [selected, setSelected] = useState(defaultFormData)
 
@@ -38,6 +41,7 @@ const AddMoney = () => {
 	const {collectedData, addCollectedData} = useCollectedData()
 	const submit = () => {
 		addCollectedData(selected)
+		// clear the data in the form
 		setSelected(defaultFormData)
 		alert('Saved Successfully')
 	}
