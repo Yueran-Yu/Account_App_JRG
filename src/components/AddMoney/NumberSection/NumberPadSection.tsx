@@ -125,8 +125,13 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'OK':
-					if (output !== '0') return
+					if (result === '0') return
 					if (props.onOk) props.onOk()
+
+					console.log("click works")
+					console.log('OUTPUT')
+					console.log(typeof output)
+					console.log(output)
 					setResultOutputTemp('0', '', '')
 					break;
 				case '=':
@@ -162,7 +167,6 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 				<button>7</button>
 				<button>8</button>
 				<button>9</button>
-
 				<button>
 					<Icon name='delete'/>
 				</button>

@@ -11,6 +11,7 @@ type Props = {
 export const DateSection: React.FC<Props> = (props) => {
 	const date = props.value
 	const onChange = (e: Date) => {
+
 		props.onDateChange(e)
 	}
 	return (
