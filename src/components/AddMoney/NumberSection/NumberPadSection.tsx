@@ -44,12 +44,6 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 		}
 	}
 
-	const setResultOutputTemp = (result: string, output: string, temp = '') => {
-		setResult(result)
-		setOutput(output)
-		setTemp(temp)
-	}
-
 	const onClickButtonWrapper = (e: React.MouseEvent) => {
 		const text = (e.target as HTMLButtonElement).textContent
 		if (text === null) {return}
@@ -68,14 +62,19 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 				case '9':
 					setBtn('=')
 					if (output.length > 0 && output !== '0') {
-						if (output.charAt(output.length - 1) === '0') {
-							setResultOutputTemp(calc(output.slice(0, -1) + text), output.slice(0, -1) + text, text)
-						} else {
-							setResultOutputTemp(calc(output + text), output + text, temp + text)
-						}
+						setResult(calc(output + text))
+						setOutput(output + text)
+						setTemp(temp + text)
 					} else {
-						setResultOutputTemp(calc(text), text, text)
+						setResult(calc(text))
+						setOutput(text)
+						setTemp(text)
 					}
+					console.log('temp in number')
+					console.log(temp)
+					console.log('output in number')
+					console.log(output)
+
 					break;
 				case '':
 					if (output.length > 0) {
@@ -104,7 +103,9 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'C':
-					setResultOutputTemp('0', '0', '')
+					setResult('0')
+					setOutput('0')
+					setTemp('temp')
 					break;
 				case '.':
 					if (output.length > 0 && output !== '0') {
@@ -123,16 +124,19 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 						setTemp('0' + text)
 						setOutput('0' + text)
 					}
+					console.log('temp in dot')
+					console.log(temp)
 					break;
 				case 'OK':
 					if (result === '0') return
 					if (props.onOk) props.onOk()
-
 					console.log("click works")
 					console.log('OUTPUT')
 					console.log(typeof output)
 					console.log(output)
-					setResultOutputTemp('0', '', '')
+					setResult('0')
+					setOutput('')
+					setTemp('')
 					break;
 				case '=':
 					if (lastChar === '+' || lastChar === '-') {

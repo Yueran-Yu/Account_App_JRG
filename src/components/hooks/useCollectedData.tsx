@@ -27,8 +27,12 @@ export const useCollectedData = () => {
 	}, [collectedData])
 
 
-	const addCollectedData = (fourCollectedItems: CollectedData) => {
-		setCollectedData([...collectedData, fourCollectedItems])
+	const addCollectedData = (fiveSelectedItems: CollectedData) => {
+		if (fiveSelectedItems.tagsId.length === 0) {
+			alert('Please Select Tags')
+			return false
+		}
+		setCollectedData([...collectedData, fiveSelectedItems])
 	}
 
 

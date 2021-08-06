@@ -29,7 +29,6 @@ const defaultFormData = {
 }
 
 
-
 const AddMoney = () => {
 	const [selected, setSelected] = useState(defaultFormData)
 
@@ -40,16 +39,16 @@ const AddMoney = () => {
 	}
 	const {collectedData, addCollectedData} = useCollectedData()
 	const submit = () => {
-		addCollectedData(selected)
-		// clear the data in the form
-		setSelected(defaultFormData)
-		alert('Saved Successfully')
+		if (addCollectedData(selected)) {
+			// clear the data in the form
+			setSelected(defaultFormData)
+			alert('Saved Successfully')
+		}
 	}
 	return (<MyLayout>
-		{/*<p>*/}
-		{/*	{selected.date ? `${selected.date.getFullYear()}/${selected.date.getMonth() + 1}/${selected.date.getDate()}/*/}
-		{/*		${selected.date.getHours()}:${selected.date.getMinutes()}:${selected.date.getSeconds()}` : ""}*/}
-		{/*</p>*/}
+		<p>
+
+		</p>
 		<CategorySection
 			value={selected.category}
 			onChange={category => onChangeTemplate({category: category})}/>
