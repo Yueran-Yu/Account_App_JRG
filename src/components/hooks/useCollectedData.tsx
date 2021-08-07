@@ -31,8 +31,10 @@ export const useCollectedData = () => {
 		if (fiveSelectedItems.tagsId.length === 0) {
 			alert('Please Select Tags')
 			return false
+		} else {
+			setCollectedData([...collectedData, fiveSelectedItems])
+			return true
 		}
-		setCollectedData([...collectedData, fiveSelectedItems])
 	}
 
 

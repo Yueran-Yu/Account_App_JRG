@@ -70,11 +70,6 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 						setOutput(text)
 						setTemp(text)
 					}
-					console.log('temp in number')
-					console.log(temp)
-					console.log('output in number')
-					console.log(output)
-
 					break;
 				case '':
 					if (output.length > 0) {
@@ -124,16 +119,10 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 						setTemp('0' + text)
 						setOutput('0' + text)
 					}
-					console.log('temp in dot')
-					console.log(temp)
 					break;
 				case 'OK':
 					if (result === '0') return
 					if (props.onOk) props.onOk()
-					console.log("click works")
-					console.log('OUTPUT')
-					console.log(typeof output)
-					console.log(output)
 					setResult('0')
 					setOutput('')
 					setTemp('')

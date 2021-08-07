@@ -46,9 +46,6 @@ const AddMoney = () => {
 		}
 	}
 	return (<MyLayout>
-		<p>
-
-		</p>
 		<CategorySection
 			value={selected.category}
 			onChange={category => onChangeTemplate({category: category})}/>

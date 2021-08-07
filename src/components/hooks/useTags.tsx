@@ -43,6 +43,11 @@ export const useTags = () => {
 		setTags(tags.filter(tag => tag.id !== id))
 	}
 
+	const getName = (id: number) => {
+		const tag = tags.filter(t => t.id === id)[0]
+		return tag ? tag.name : ''
+	}
+
 	const addTag = () => {
 		const tagName = window.prompt('The new Tag name is:')
 		if (tagName !== null && tagName !== '') {
@@ -57,6 +62,9 @@ export const useTags = () => {
 		findTagIndex,
 		updateTag,
 		deleteTag,
-		addTag
+		addTag,
+		getName
 	}
 }
+
+

@@ -12,12 +12,10 @@ export const CategorySection: React.FC<Props> = (props) => {
 	// 新的类型： 字符串的联合
 	const [categoryList] = useState<(Keys)[]>(['-', '+'])
 	// equals const [categoryList] = useState<('-', '+')[]>(['-', '+'])
-
 	return (
 		<Wrapper>
 			<div className='roundCorner'>
 				<ul>
-
 					{
 						categoryList.map(c =>
 							<li key={c}
@@ -25,7 +23,6 @@ export const CategorySection: React.FC<Props> = (props) => {
 									className={category === c ? 'selected' : ''}>
 								{categoryMap[c]}
 							</li>)
-
 					}
 				</ul>
 			</div>
