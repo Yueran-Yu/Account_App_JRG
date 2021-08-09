@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useUpdate} from "./useUpdate";
 
-type CollectedData = {
+export type CollectedData = {
 	tagsId: number[]
 	note: string
 	date: Date
@@ -24,7 +24,7 @@ export const useCollectedData = () => {
 
 	useUpdate(() => {
 		window.localStorage.setItem('collectedData', JSON.stringify(collectedData))
-	}, [collectedData])
+	}, collectedData)
 
 
 	const addCollectedData = (fiveSelectedItems: CollectedData) => {

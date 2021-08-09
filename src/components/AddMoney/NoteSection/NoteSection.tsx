@@ -9,7 +9,6 @@ type Props = {
 export const NoteSection: React.FC<Props> = (props) => {
 	const note = props.value
 	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-		console.log(e.target.value)
 		props.onChange(e.target.value)
 	}
 
