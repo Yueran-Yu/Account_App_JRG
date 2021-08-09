@@ -37,7 +37,7 @@ const AddMoney = () => {
 	const onChangeTemplate = (obj: Partial<Selected>) => {
 		setSelected({...selected, ...obj})
 	}
-	const {collectedData, addCollectedData} = useCollectedData()
+	const {addCollectedData} = useCollectedData()
 	const submit = () => {
 		if (addCollectedData(selected)) {
 			// clear the data in the form

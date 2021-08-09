@@ -40,7 +40,7 @@ const Statistics = () => {
 	const {getName} = useTags()
 	const data = collectedData.filter(r => r.category === category)
 	const hash: { [K: string]: CollectedData[] } = {}  // {'2020-05-11': [item,item]. '2020-05-10':[item,item]}
-	data.map(r => {
+	data.forEach(r => {
 		const key = day(r.date).format('YYYY-MM-DD')
 		if (!(key in hash)) {
 			hash[key] = []
