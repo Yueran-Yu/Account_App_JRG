@@ -36,7 +36,7 @@ const InputWrapper = styled.div`
 `
 
 export const EditTag: React.FC = () => {
-	const {tags, findTag, updateTag, deleteTag} = useTags()
+	const {findTag, updateTag, deleteTag} = useTags()
 	const {tagId} = useParams<Params>()
 	// const tag = tags.filter(t => t.id === parseInt(tagId))[0]
 	const tag = findTag(parseInt(tagId))

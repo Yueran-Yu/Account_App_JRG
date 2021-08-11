@@ -28,7 +28,6 @@ const defaultFormData = {
 	amount: 0
 }
 
-
 const AddMoney = () => {
 	const [selected, setSelected] = useState(defaultFormData)
 
