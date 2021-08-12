@@ -39,6 +39,7 @@ function App() {
 	);
 }
 
+// reading : https://fettblog.eu/typescript-react/hooks/
 export default App;
 
 /*
