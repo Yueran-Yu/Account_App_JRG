@@ -1,6 +1,6 @@
 import React, {ChangeEventHandler} from 'react';
 import {Icon} from "../../Icon";
-import {InputForm} from "../../InputForm";
+import {InputForm} from "../InputForm";
 
 type Props = {
 	value: string

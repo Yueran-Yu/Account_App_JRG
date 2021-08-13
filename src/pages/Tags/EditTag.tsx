@@ -5,7 +5,7 @@ import Layout from "../../components/Layout";
 import {Icon} from "../../components/Icon";
 import {Button} from 'components/Button';
 import styled from 'styled-components';
-import {InputForm} from "../../components/InputForm";
+import {InputForm} from "../../components/AddMoney/InputForm";
 import {Center} from "../../components/Center";
 
 

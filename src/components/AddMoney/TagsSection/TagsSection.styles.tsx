@@ -4,7 +4,7 @@ export const Wrapper = styled.section`
   background: #ffffff;
   padding: 12px 16px;
   flex-grow: 1;
-	overflow: scroll;
+  overflow: scroll;
 
   > ol {
     margin: 0 -12px;
@@ -31,7 +31,7 @@ export const Wrapper = styled.section`
     padding: 2px 4px;
     border-bottom: 1px solid #333;
     color: #666;
-    margin-top: 8px;
+    margin-bottom: 8px;
     font-family: fantasy;
   }
 `
