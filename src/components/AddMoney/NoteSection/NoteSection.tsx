@@ -6,6 +6,7 @@ type Props = {
 	value: string
 	onChange: (value: string) => void
 }
+
 export const NoteSection: React.FC<Props> = (props) => {
 	const note = props.value
 	const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {

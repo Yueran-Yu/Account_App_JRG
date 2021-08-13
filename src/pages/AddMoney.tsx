@@ -12,7 +12,12 @@ const NoteDate = styled.section`
   font-size: 14px;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 5px 0;
+
+  .dateSection {
+		display: flex;
+		align-items: center;
+  }
 `
 const MyLayout = styled(Layout)`
   display: flex;
@@ -58,7 +63,7 @@ const AddMoney = () => {
 				value={selected.note}
 				onChange={note => onChangeTemplate({note})}/>
 
-			<DateSection value={selected.date}
+			<DateSection className={'dateSection'} value={selected.date}
 									 onDateChange={(date: Date) => onChangeTemplate({date: date})}/>
 		</NoteDate>
 		<NumberPadSection

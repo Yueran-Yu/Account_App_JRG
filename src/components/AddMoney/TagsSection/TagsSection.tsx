@@ -22,6 +22,7 @@ export const TagsSection: React.FC<Props> = (props) => {
 
 	return (
 		<Wrapper>
+			<button onClick={addTag}>New Tag</button>
 			<ol>
 				{/* shift * 2 => search : Surround with Emmet => type: li*
                 This is the quick way to wrap <li> around content
@@ -38,7 +39,6 @@ export const TagsSection: React.FC<Props> = (props) => {
 						</li>)
 				}
 			</ol>
-			<button onClick={addTag}>New Tag</button>
 		</Wrapper>
 	)
 }
