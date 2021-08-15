@@ -93,7 +93,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy": "sh scripts/deploy.sh"
+    "deploy:github": "sh scripts/deploygithub.sh",
+    "deploy:heroku": "sh scripts/deployHeroku.sh"
   },
   "eslintConfig": {
     "extends": [
