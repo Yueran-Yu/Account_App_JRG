@@ -6,6 +6,18 @@
   padding: 0;
 }
 
+@media screen and (min-width: 692px) {
+  body {
+    font-family: $font-black;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #4c4c4c;
+    max-width: 60vh;
+    margin: 2px auto;
+    background: #f6f6f6;
+  }
+}
+
 *::before {
   box-sizing: border-box;
 }
@@ -28,7 +40,8 @@ body {
   font-size: 16px;
   line-height: 1.2;
   color: #4c4c4c;
-  background: #f5f5f5;
+  background: #f6f6f6;
+
 }
 
 button, input {
@@ -55,3 +68,4 @@ button, input {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
