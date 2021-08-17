@@ -6,13 +6,13 @@
   padding: 0;
 }
 
-@media screen and (min-width: 692px) {
+@media screen and (min-width: 592px) {
   body {
     font-family: $font-black;
     font-size: 16px;
     line-height: 1.2;
     color: #4c4c4c;
-    max-width: 60vh;
+    max-width: 50vh;
     margin: 2px auto;
     background: #f6f6f6;
   }

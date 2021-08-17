@@ -4,7 +4,7 @@ export const Wrapper = styled.section`
   background: #ffffff;
   padding: 12px 16px;
   flex-grow: 1;
-  overflow: scroll;
+  overflow: auto;
 
   > ol {
     margin: 0 -12px;

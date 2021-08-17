@@ -5,5 +5,5 @@ export const Center = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 30px;
+  margin: 30px 0 20px 0;
 `

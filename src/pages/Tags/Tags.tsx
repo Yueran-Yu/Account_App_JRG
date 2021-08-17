@@ -12,6 +12,14 @@ const TagsList = styled.ol`
   background: white;
   font-weight: 150;
 
+  h3 {
+    text-align: center;
+    width: 100%;
+    padding: 15px 0 10px 0;
+    background: #eeeeee;
+		font-weight: 300;
+  }
+
   > a > li {
     display: flex;
     border-bottom: 1px dashed #d5d5d9;
@@ -32,6 +40,7 @@ const Tags = () => {
 	return (
 		<Layout>
 			<TagsList>
+				<h3>Tag List</h3>
 				{tags.map(tag =>
 					<Link to={'/tags/' + tag.id}>
 						<li key={tag.id}>
