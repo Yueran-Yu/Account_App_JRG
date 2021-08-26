@@ -23,6 +23,7 @@ const Label = styled.label`
 
     ::placeholder {
       color: #bebebe;
+			font-size: 15px;
       font-family: "Arial Narrow",serif;
     }
   }
