@@ -22,7 +22,7 @@ export const Wrapper = styled.label`
 
     ::placeholder {
       color: #bebebe;
-      font-family: fantasy;
+      font-family: "Arial Narrow",serif;
     }
   }
 `
