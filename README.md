@@ -4,10 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `sh scripts/deploy.sh`
-Run the deploy.sh
+In the project directory, you can run 
+### `yarn deploy:github` or `yarn deploy:heroku`
+to deploy the app in the github and heroku.
 
 
 ### `yarn start`
