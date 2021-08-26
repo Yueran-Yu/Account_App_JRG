@@ -32,6 +32,7 @@ export const Wrapper = styled.section`
     border-bottom: 1px solid #333;
     color: #666;
     margin-bottom: 8px;
-    font-family: fantasy;
+		font-size: large;
+    font-family: "Academy Engraved LET",serif;
   }
 `

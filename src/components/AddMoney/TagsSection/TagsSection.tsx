@@ -33,7 +33,7 @@ export const TagsSection: React.FC<Props> = (props) => {
 							key={tag.id}
 							// onClick里面传函数 要的是一个动作
 							// className 要的直接是一个结果
-							onClick={() => { onToggleTag(tag.id)}}
+							onClick={() => {onToggleTag(tag.id)}}
 							className={getSelectedTagsClass(tag.id)}>
 							{tag.name}
 						</li>)
