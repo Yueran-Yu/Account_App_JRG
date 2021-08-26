@@ -15,16 +15,14 @@ export const CategorySection: React.FC<Props> = (props) => {
 	return (
 		<Wrapper>
 			<div className='roundCorner'>
-				<ul>
-					{
-						categoryList.map(c =>
-							<li key={c}
-									onClick={() => {props.onChange(c)}}
-									className={category === c ? 'selected' : ''}>
-								{categoryMap[c]}
-							</li>)
-					}
-				</ul>
+				{
+					categoryList.map(c =>
+						<div key={c}
+								 onClick={() => {props.onChange(c)}}
+								 className={category === c ? 'selected' : ''}>
+							{categoryMap[c]}
+						</div>)
+				}
 			</div>
 		</Wrapper>
 	)
