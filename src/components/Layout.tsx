@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  border: 1px dashed #e0e0e0;
 `
 
 const Main = styled.div`
