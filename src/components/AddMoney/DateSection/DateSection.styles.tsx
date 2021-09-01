@@ -10,5 +10,6 @@ export const Wrapper = styled.div`
     margin-right: 5px;
     border-radius: 5px 5px 5px 5px;
     font-weight: 700;
+		padding: 0 5px;
   }
 `
