@@ -38,7 +38,9 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 	const calc = (value: string) => {
 		if (value !== '') {
 			// replace() is used to truncate trailing "0"
-			const v = new RegExp('(\\.0*|(?<=(\\..*))0*)$', 'g')
+			// const v = new RegExp('(\\.0*|(?:(\\..*))0*)$', 'g')
+			const v = new RegExp('(\\.0*|(?:(\\..*))0*)$', 'g')
+
 			return eval(value).toFixed(9).toString().replace(v, '')
 		} else {
 			return '0'
