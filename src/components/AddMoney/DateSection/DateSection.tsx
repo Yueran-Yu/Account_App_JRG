@@ -31,5 +31,3 @@ export const DateSection: React.FC<Props> = (props) => {
 		</Wrapper>
 	)
 }
-
-// change the style
