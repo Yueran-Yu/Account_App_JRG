@@ -31,3 +31,5 @@ export const DateSection: React.FC<Props> = (props) => {
 		</Wrapper>
 	)
 }
+
+// reading: The trick to viewport units on mobile

@@ -42,6 +42,7 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 			const v = new RegExp(`(\\.\\d+?)0+\\b`, 'g')
 			// (\.0*|(?<=(\..*))0*)$
 			// ^([\d,]+)$|^([\d,]+)\.0*$|^([\d,]+\.[0-9]*?)0*$  $1$2$3
+
 			return eval(value).toFixed(9).toLocaleString().replace(v, '$1')
 		} else {
 			return '0'
