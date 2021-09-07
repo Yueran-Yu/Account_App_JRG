@@ -15,13 +15,14 @@ const NoteDate = styled.section`
   padding: 5px 0;
 
   .dateSection {
-		display: flex;
-		align-items: center;
+    display: flex;
+    align-items: center;
   }
 `
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
+  border: 1px dashed #e0e0e0;
 `
 type Category = '-' | '+'
 
@@ -35,7 +36,6 @@ const defaultFormData = {
 
 const AddMoney = () => {
 	const [selected, setSelected] = useState(defaultFormData)
-
 	// get the type of selected Object by typeof method
 	type Selected = typeof selected
 	const onChangeTemplate = (obj: Partial<Selected>) => {
@@ -49,29 +49,31 @@ const AddMoney = () => {
 			alert('Saved Successfully')
 		}
 	}
-	return (<MyLayout>
-		<CategorySection
-			value={selected.category}
-			onChange={category => onChangeTemplate({category: category})}/>
+	return (
+		<MyLayout>
+			<CategorySection
+				value={selected.category}
+				onChange={category => onChangeTemplate({category: category})}/>
 
-		<TagsSection
-			value={selected.tagsId}
-			onChange={tagsId => onChangeTemplate({tagsId})}/>
+			<TagsSection
+				value={selected.tagsId}
+				onChange={tagsId => onChangeTemplate({tagsId})}/>
 
-		<NoteDate>
-			<NoteSection
-				value={selected.note}
-				onChange={note => onChangeTemplate({note})}/>
+			<NoteDate>
+				<NoteSection
+					value={selected.note}
+					onChange={note => onChangeTemplate({note})}/>
 
-			<DateSection className={'dateSection'} value={selected.date}
-									 onDateChange={(date: Date) => onChangeTemplate({date: date})}/>
-		</NoteDate>
-		<NumberPadSection
-			value={selected.amount}
-			onChange={amount => {onChangeTemplate({amount})}}
-			onOk={submit}
-		/>
-	</MyLayout>)
+				<DateSection className={'dateSection'} value={selected.date}
+										 onDateChange={(date: Date) => onChangeTemplate({date: date})}/>
+			</NoteDate>
+			<NumberPadSection
+				value={selected.amount}
+				onChange={amount => {onChangeTemplate({amount})}}
+				onOk={submit}
+			/>
+		</MyLayout>
+	)
 }
 
 export default AddMoney;

@@ -32,4 +32,4 @@ export const DateSection: React.FC<Props> = (props) => {
 	)
 }
 
-// reading: The trick to viewport units on mobile
+// reading: The trick to viewport units on mobile
