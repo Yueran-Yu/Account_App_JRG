@@ -5,8 +5,6 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  border: 2px solid blue;
 `
 
 const Main = styled.div`
@@ -26,6 +24,7 @@ export const useWindowSize = (): WindowSize => {
 		function updateSize() {
 			setWindowSize({width: window.innerWidth, height: window.innerHeight})
 		}
+
 		// set size at the first client-side load
 		updateSize()
 		window.addEventListener('resize', updateSize)
@@ -40,10 +39,10 @@ export const useWindowSize = (): WindowSize => {
 }
 
 const Layout = ({children, className}: any) => {
-	const {width, height} = useWindowSize()
+	const {height} = useWindowSize()
+
 	return (
-		<Wrapper>
-			<h3>Height: {height} Width: {width}</h3>
+		<Wrapper style={{height: height}}>
 			<Main className={className}>
 				{children}
 			</Main>
