@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  //height: calc(var(--vh, 1vh) * 100);
 `
 
 const Main = styled.div`
@@ -40,6 +41,12 @@ export const useWindowSize = (): WindowSize => {
 
 const Layout = ({children, className}: any) => {
 	const {height} = useWindowSize()
+
+	/* Here is the second way to set the responsive height in mobile browser*/
+	// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+	//let vh = window.innerHeight * 0.01;
+	// Then we set the value in the --vh custom property to the root of the document
+	//document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 	return (
 		<Wrapper style={{height: height}}>

@@ -36,6 +36,7 @@ const defaultFormData = {
 
 const AddMoney = () => {
 	const [selected, setSelected] = useState(defaultFormData)
+
 	// get the type of selected Object by typeof method
 	type Selected = typeof selected
 	const onChangeTemplate = (obj: Partial<Selected>) => {
