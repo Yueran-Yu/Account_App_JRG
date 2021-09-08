@@ -22,7 +22,6 @@ const NoteDate = styled.section`
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
-  border: 1px dashed #e0e0e0;
 `
 type Category = '-' | '+'
 

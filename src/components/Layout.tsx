@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  border: 1px dashed #e0e0e0;
   //height: calc(var(--vh, 1vh) * 100);
 `
 
