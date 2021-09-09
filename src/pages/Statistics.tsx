@@ -5,6 +5,35 @@ import {CollectedData, useCollectedData} from "../components/hooks/useCollectedD
 import {CategorySection} from "../components/AddMoney/CategorySection/CategorySection";
 import {useTags} from "../components/hooks/useTags";
 import day from 'dayjs';
+import ReactECharts from 'echarts-for-react';
+
+console.log(ReactECharts)
+
+
+const Page: React.FC = () => {
+	const options = {
+		grid: {top: 8, right: 8, bottom: 24, left: 36},
+		xAxis: {
+			type: 'category',
+			data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+		},
+		yAxis: {
+			type: 'value',
+		},
+		series: [
+			{
+				data: [820, 932, 901, 934, 1290, 1330, 1320],
+				type: 'line',
+				smooth: true,
+			},
+		],
+		tooltip: {
+			trigger: 'axis',
+		},
+	};
+	return <ReactECharts option={options}/>;
+};
+
 
 const CategoryWrapper = styled.div`
   display: flex;
@@ -34,7 +63,9 @@ const Header = styled.h3`
   padding: 10px 16px;
 `
 
+
 const Statistics = () => {
+
 	const [category, setCategory] = useState<'-' | '+'>('-')
 	const {collectedData} = useCollectedData()
 	const {getName} = useTags()
@@ -55,6 +86,7 @@ const Statistics = () => {
 		return 0
 	})
 	return (<Layout>
+		<Page/>
 		<CategoryWrapper>
 			<CategorySection value={category} onChange={value => setCategory(value)}/>
 		</CategoryWrapper>
