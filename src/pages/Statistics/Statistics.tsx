@@ -1,39 +1,11 @@
 import React, {ReactNode, useState} from 'react';
-import Layout from "../components/Layout";
+import Layout from "../../components/Layout";
 import styled from 'styled-components';
-import {CollectedData, useCollectedData} from "../components/hooks/useCollectedData";
-import {CategorySection} from "../components/AddMoney/CategorySection/CategorySection";
-import {useTags} from "../components/hooks/useTags";
+import {CollectedData, useCollectedData} from "../../components/hooks/useCollectedData";
+import {CategorySection} from "../../components/AddMoney/CategorySection/CategorySection";
+import {useTags} from "../../components/hooks/useTags";
 import day from 'dayjs';
-import ReactECharts from 'echarts-for-react';
-
-console.log(ReactECharts)
-
-
-const Page: React.FC = () => {
-	const options = {
-		grid: {top: 8, right: 8, bottom: 24, left: 36},
-		xAxis: {
-			type: 'category',
-			data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-		},
-		yAxis: {
-			type: 'value',
-		},
-		series: [
-			{
-				data: [820, 932, 901, 934, 1290, 1330, 1320],
-				type: 'line',
-				smooth: true,
-			},
-		],
-		tooltip: {
-			trigger: 'axis',
-		},
-	};
-	return <ReactECharts option={options}/>;
-};
-
+import {Page} from './Charts';
 
 const CategoryWrapper = styled.div`
   display: flex;
@@ -63,9 +35,7 @@ const Header = styled.h3`
   padding: 10px 16px;
 `
 
-
 const Statistics = () => {
-
 	const [category, setCategory] = useState<'-' | '+'>('-')
 	const {collectedData} = useCollectedData()
 	const {getName} = useTags()
@@ -79,6 +49,7 @@ const Statistics = () => {
 		hash[key].push(r)
 	})
 
+
 	const arr = Object.entries(hash).sort((a, b) => {
 		if (a[0] === b[0]) return 0
 		if (a[0] > b[0]) return -1
@@ -86,10 +57,10 @@ const Statistics = () => {
 		return 0
 	})
 	return (<Layout>
-		<Page/>
 		<CategoryWrapper>
 			<CategorySection value={category} onChange={value => setCategory(value)}/>
 		</CategoryWrapper>
+		<Page/>
 		{
 			arr.map(([date, collectedData]) => <div>
 				<Header>

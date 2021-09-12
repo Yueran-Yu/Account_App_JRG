@@ -3,7 +3,7 @@ import React from 'react';
 import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import Tags from 'pages/Tags/Tags';
 import AddMoney from 'pages/AddMoney';
-import Statistics from 'pages/Statistics';
+import Statistics from 'pages/Statistics/Statistics';
 import {NotMatch} from 'pages/NotMatch';
 import styled from 'styled-components';
 import {EditTag} from "./pages/Tags/EditTag";
