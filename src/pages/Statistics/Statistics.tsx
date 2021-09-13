@@ -1,11 +1,11 @@
 import React, {ReactNode, useState} from 'react';
 import Layout from "../../components/Layout";
-import ReactECharts from 'echarts-for-react';
 import styled from 'styled-components';
 import {CollectedData, useCollectedData} from "../../components/hooks/useCollectedData";
 import {CategorySection} from "../../components/AddMoney/CategorySection/CategorySection";
 import {useTags} from "../../components/hooks/useTags";
 import day from 'dayjs';
+import {Charts} from './Charts';
 
 const CategoryWrapper = styled.div`
   display: flex;
@@ -50,42 +50,6 @@ const Statistics = () => {
 		hash[key].push(r)
 	})
 
-	const Charts = () => {
-		return {
-			tooltip: {
-				trigger: 'item',
-				formatter: `{b}: $\{c} ({d}%)`
-			},
-			series: [
-				{
-					type: 'pie',
-					radius: ['55%', '95%'],
-					avoidLabelOverlap: false,
-					label: {
-						show: false,
-						position: 'center'
-					},
-					emphasis: {
-						label: {
-							show: true,
-							fontSize: '20',
-							fontWeight: 'bold'
-						}
-					},
-					labelLine: {
-						show: false
-					},
-					data: [
-						{value: 1048, name: '搜索引擎'},
-						{value: 735, name: '直接访问'},
-						{value: 580, name: '邮件营销'},
-						{value: 484, name: '联盟广告'},
-						{value: 300, name: '视频广告'}
-					]
-				}
-			]
-		};
-	}
 
 	const arr = Object.entries(hash).sort((a, b) => {
 		if (a[0] === b[0]) return 0
@@ -99,7 +63,7 @@ const Statistics = () => {
 			<CategoryWrapper>
 				<CategorySection value={category} onChange={value => setCategory(value)}/>
 			</CategoryWrapper>
-			<ReactECharts option={Charts()}/>
+			<Charts/>
 			{
 				arr.map(([date, collectedData]) => <div>
 					<Header>
