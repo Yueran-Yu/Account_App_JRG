@@ -126,7 +126,10 @@ export const NumberPadSection: React.FC<Props> = (props) => {
 					}
 					break;
 				case 'OK':
-					if (result === '0') return
+					if (result === '0'){
+						alert('Please enter your amount')
+						return
+					}
 					if (props.onOk) props.onOk()
 					setResult('0')
 					setOutput('')

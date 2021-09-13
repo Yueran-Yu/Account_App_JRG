@@ -5,6 +5,7 @@ export const useUpdate = (fn: () => void, dependency: any) => {
 	useEffect(() => {
 		count.current += 1
 	})
+
 	useEffect(() => {
 		if (count.current > 1) {
 			fn()

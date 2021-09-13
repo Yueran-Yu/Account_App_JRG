@@ -65,3 +65,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 5. [“div resize event listener react” Code Answer](https://www.codegrepper.com/code-examples/javascript/div+resize+event+listener+react)
 6. [Developing responsive layouts with React Hooks](https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/)
 7. ★[The trick to viewport units on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/)
+8. [My React components render twice and drive me crazy](https://mariosfakiolas.com/blog/my-react-components-render-twice-and-drive-me-crazy/)

@@ -16,7 +16,6 @@ export type CollectedData = {
 export const useCollectedData = () => {
 	const [collectedData, setCollectedData] = useState<CollectedData[]>([]);
 
-
 	useEffect(() => {
 		setCollectedData(JSON.parse(window.localStorage.getItem('collectedData') || '[]'))
 	}, [])
@@ -26,8 +25,8 @@ export const useCollectedData = () => {
 		window.localStorage.setItem('collectedData', JSON.stringify(collectedData))
 	}, collectedData)
 
-
 	const addCollectedData = (fiveSelectedItems: CollectedData) => {
+
 		if (fiveSelectedItems.tagsId.length === 0) {
 			alert('Please Select Tags')
 			return false
@@ -36,7 +35,6 @@ export const useCollectedData = () => {
 			return true
 		}
 	}
-
-
+	console.log(collectedData)
 	return {collectedData, addCollectedData}
 }
