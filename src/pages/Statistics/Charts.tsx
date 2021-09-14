@@ -1,12 +1,14 @@
 import React from "react";
 import ReactECharts from 'echarts-for-react';
 import {EChartsOption} from "echarts";
-import {useCollectedData} from "../../components/hooks/useCollectedData";
-import _ from 'lodash';
+/*import {useCollectedData} from "../../components/hooks/useCollectedData";
+import _ from 'lodash';*/
 
 export const Charts: React.FC = () => {
-	const {collectedData} = useCollectedData()
-	console.log(collectedData.map(c => _.pick(c, ['amount', 'date', 'tagsId', 'category'])))
+	// const {collectedData} = useCollectedData()
+	// console.log(collectedData.map(c => _.pick(c, ['amount', 'date', 'tagsId', 'category'])))
+	console.log(`I'm rendered !`)
+
 	const options: EChartsOption = {
 		tooltip: {
 			trigger: 'item',

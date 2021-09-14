@@ -66,3 +66,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 6. [Developing responsive layouts with React Hooks](https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/)
 7. ★[The trick to viewport units on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/)
 8. ★[How to Solve the Infinite Loop of React.useEffect()](https://dmitripavlutin.com/react-useeffect-infinite-loop/)
+9. [The Complete Guide to useRef() and Refs in React](https://dmitripavlutin.com/react-useref-guide/)
