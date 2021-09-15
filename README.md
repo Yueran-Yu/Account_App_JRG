@@ -67,3 +67,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 7. ★[The trick to viewport units on mobile](https://css-tricks.com/the-trick-to-viewport-units-on-mobile/)
 8. ★[How to Solve the Infinite Loop of React.useEffect()](https://dmitripavlutin.com/react-useeffect-infinite-loop/)
 9. [The Complete Guide to useRef() and Refs in React](https://dmitripavlutin.com/react-useref-guide/)
+10. [All React + TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react)
+11. #### Javascript can only return one value from a function, so custom hook return an object that includes multiple values.
+12. ★[Writing Your Own React Hooks, the Return Value](https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6)
+13.[React Components as TypeScript Generic Functions](https://javascript.plainenglish.io/react-components-as-typescript-generic-functions-8aa83afff597)
