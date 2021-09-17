@@ -35,6 +35,5 @@ export const useCollectedData = () => {
 			return true
 		}
 	}
-	console.log(collectedData)
 	return {collectedData, addCollectedData}
 }

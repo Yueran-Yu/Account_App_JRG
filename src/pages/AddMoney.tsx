@@ -42,6 +42,7 @@ const AddMoney = () => {
 		setSelected({...selected, ...obj})
 	}
 	const {addCollectedData} = useCollectedData()
+
 	const submit = () => {
 		if (addCollectedData(selected)) {
 			// clear the data in the form
