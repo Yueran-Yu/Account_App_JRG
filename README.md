@@ -71,3 +71,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 11. #### Javascript can only return one value from a function, so custom hook return an object that includes multiple values.
 12. ★[Writing Your Own React Hooks, the Return Value](https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6)
 13.[React Components as TypeScript Generic Functions](https://javascript.plainenglish.io/react-components-as-typescript-generic-functions-8aa83afff597)
+14.[A Guide to React Context and useContext() Hook](https://dmitripavlutin.com/react-context-and-usecontext/)
+15.[How to Compare Objects in JavaScript](https://dmitripavlutin.com/how-to-compare-objects-in-javascript/#1-referential-equality)

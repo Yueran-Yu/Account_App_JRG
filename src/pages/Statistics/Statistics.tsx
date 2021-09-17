@@ -1,7 +1,7 @@
 import React, {ReactNode, useState} from 'react';
 import Layout from "../../components/Layout";
 import styled from 'styled-components';
-import {CollectedData, useCollectedData} from "../../components/hooks/useCollectedData";
+import {useCollectedData} from "../../components/hooks/useCollectedData";
 import {CategorySection} from "../../components/AddMoney/CategorySection/CategorySection";
 import {useTags} from "../../components/hooks/useTags";
 import day from 'dayjs';

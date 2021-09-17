@@ -12,7 +12,6 @@ const AppWrapper = styled.div`
   color: #6d6c6c;
 `
 
-
 function App() {
 	return (
 		<AppWrapper>
