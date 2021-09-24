@@ -1,5 +1,5 @@
 import React from 'react';
-import {useTags} from "../../hooks/useTags";
+import {useTags} from "../../../hooks/useTags";
 import {Wrapper} from "./TagsSection.styles";
 
 type Props = {

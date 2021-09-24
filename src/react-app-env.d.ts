@@ -2,15 +2,6 @@
 /// <reference types="react" />
 /// <reference types="react-dom" />
 
-
-declare type CollectedData = {
-	tagsId: number[]
-	note: string
-	date: Date
-	category: '+' | '-'
-	amount: number
-}
-
 declare namespace NodeJS {
 	interface ProcessEnv {
 		readonly NODE_ENV: 'development' | 'production' | 'test';

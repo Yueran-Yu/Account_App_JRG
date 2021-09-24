@@ -6,16 +6,16 @@ import {useUpdate} from "./useUpdate";
 // type newCollectedItems = Omit<CollectedData, 'date'>
 
 export const useCollectedData = () => {
-	const [collectedData, setCollectedData] = useState<CollectedData[]>([]);
+	const [collected, setCollected] = useState<CollectedData[]>([]);
 
 	useEffect(() => {
-		setCollectedData(JSON.parse(window.localStorage.getItem('collectedData') || '[]'))
+		setCollected(JSON.parse(window.localStorage.getItem('collectedData') || '[]'))
 	}, [])
 
 
 	useUpdate(() => {
-		window.localStorage.setItem('collectedData', JSON.stringify(collectedData))
-	}, collectedData)
+		window.localStorage.setItem('collectedData', JSON.stringify(collected))
+	}, collected)
 
 	const addCollectedData = (fiveSelectedItems: CollectedData) => {
 
@@ -23,9 +23,9 @@ export const useCollectedData = () => {
 			alert('Please Select Tags')
 			return false
 		} else {
-			setCollectedData([...collectedData, fiveSelectedItems])
+			setCollected([...collected, fiveSelectedItems])
 			return true
 		}
 	}
-	return {collectedData, addCollectedData}
+	return {collected, addCollectedData}
 }

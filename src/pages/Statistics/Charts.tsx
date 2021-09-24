@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import ReactECharts from 'echarts-for-react';
 import {EChartsOption} from "echarts";
-import {useCollectedData} from "../../components/hooks/useCollectedData";
 import _ from 'lodash';
+import {CollectedDataContext} from "../../Provider/CollectedDataProvider";
 
 export const Charts: React.FC = () => {
-	const {collectedData} = useCollectedData()
+
+	const {collectedData} = useContext(CollectedDataContext) as ContextType
+
+	// collectedData.map(r=>({date:r.date, amount:r.amount}))
+	// below is the simplified way to get the value we want
 	console.log(collectedData.map(c => _.pick(c, ['amount', 'date', 'tagsId', 'category'])))
 	console.log(`I'm rendered !`)
 	const options: EChartsOption = {

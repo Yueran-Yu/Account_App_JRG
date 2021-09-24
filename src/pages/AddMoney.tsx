@@ -6,7 +6,7 @@ import {TagsSection} from '../components/AddMoney/TagsSection/TagsSection';
 import {NoteSection} from '../components/AddMoney/NoteSection/NoteSection';
 import {NumberPadSection} from "../components/AddMoney/NumberSection/NumberPadSection";
 import {DateSection} from "../components/AddMoney/DateSection/DateSection";
-import {useCollectedData} from "../components/hooks/useCollectedData";
+import {useCollectedData} from "../hooks/useCollectedData";
 
 const NoteDate = styled.section`
   font-size: 14px;

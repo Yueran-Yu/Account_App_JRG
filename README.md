@@ -56,7 +56,7 @@ the [Create React App documentation](https://facebook.github.io/create-react-app
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### 'Responsive mobile device viewport' - Reading list
+## 'Responsive mobile device viewport' - Reading list
 
 1. [现在手机分辨率这么大，如何写响应式布局?](https://www.zhihu.com/question/35221839)
 2. [关于移动端适配，你必须要知道的](https://juejin.cn/post/6844903845617729549)
@@ -70,6 +70,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 10. [All React + TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react)
 11. #### Javascript can only return one value from a function, so custom hook return an object that includes multiple values.
 12. ★[Writing Your Own React Hooks, the Return Value](https://dev.to/namick/writing-your-own-react-hooks-the-return-value-3lp6)
-13.[React Components as TypeScript Generic Functions](https://javascript.plainenglish.io/react-components-as-typescript-generic-functions-8aa83afff597)
-14.[A Guide to React Context and useContext() Hook](https://dmitripavlutin.com/react-context-and-usecontext/)
-15.[How to Compare Objects in JavaScript](https://dmitripavlutin.com/how-to-compare-objects-in-javascript/#1-referential-equality)
+13. [React Components as TypeScript Generic Functions](https://javascript.plainenglish.io/react-components-as-typescript-generic-functions-8aa83afff597)
+14. [A Guide to React Context and useContext() Hook](https://dmitripavlutin.com/react-context-and-usecontext/)
+15. [How to Compare Objects in JavaScript](https://dmitripavlutin.com/how-to-compare-objects-in-javascript/#1-referential-equality)
+16. [The React TypeScript Cheatsheet – How To Set Up Types on Hooks](https://www.freecodecamp.org/news/react-typescript-how-to-set-up-types-on-hooks/)
+17. [Typing of React hooks in Typescript](https://medium.com/ableneo/typing-of-react-hooks-in-typescript-947b200fa0b0)

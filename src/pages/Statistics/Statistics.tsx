@@ -1,43 +1,15 @@
-import React, {ReactNode, useState} from 'react';
+import React, {ReactNode, useContext, useState} from 'react';
 import Layout from "../../components/Layout";
-import styled from 'styled-components';
-import {useCollectedData} from "../../components/hooks/useCollectedData";
 import {CategorySection} from "../../components/AddMoney/CategorySection/CategorySection";
-import {useTags} from "../../components/hooks/useTags";
+import {useTags} from "../../hooks/useTags";
 import day from 'dayjs';
 import {Charts} from './Charts';
-
-const CategoryWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  background: white;
-`
-
-const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background: white;
-  font-size: 18px;
-  line-height: 20px;
-  padding: 10px 16px;
-
-  > .note {
-    margin-right: auto;
-    margin-left: 16px;
-    color: #999;
-  }
-`
-
-const Header = styled.h3`
-  font-size: 18px;
-  line-height: 20px;
-  padding: 10px 16px;
-`
+import {CategoryWrapper, Header, Item} from "./Statistics.styles";
+import {CollectedDataContext} from "../../Provider/CollectedDataProvider";
 
 const Statistics = () => {
 	const [category, setCategory] = useState<'-' | '+'>('-')
-	const {collectedData} = useCollectedData()
+	const {collectedData} = useContext(CollectedDataContext) as ContextType
 	const {getName} = useTags()
 	const data = collectedData.filter(r => r.category === category)
 	const hash: { [K: string]: CollectedData[] } = {}  // {'2020-05-11': [item,item]. '2020-05-10':[item,item]}

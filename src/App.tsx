@@ -7,6 +7,7 @@ import Statistics from 'pages/Statistics/Statistics';
 import {NotMatch} from 'pages/NotMatch';
 import styled from 'styled-components';
 import {EditTag} from "./pages/Tags/EditTag";
+import CollectedDataProvider from "./Provider/CollectedDataProvider";
 
 const AppWrapper = styled.div`
   color: #6d6c6c;
@@ -14,6 +15,7 @@ const AppWrapper = styled.div`
 
 function App() {
 	return (
+		<CollectedDataProvider>
 		<AppWrapper>
 			<Router>
 				<Switch>
@@ -36,6 +38,7 @@ function App() {
 				</Switch>
 			</Router>
 		</AppWrapper>
+		</CollectedDataProvider>
 	);
 }
 
