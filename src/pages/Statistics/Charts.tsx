@@ -11,8 +11,11 @@ export const Charts: React.FC = () => {
 	// collectedData.map(r=>({date:r.date, amount:r.amount}))
 	// below is the simplified way to get the value we want
 	console.log(collectedData.map(c => _.pick(c, ['amount', 'date', 'tagsId', 'category'])))
-	console.log(`I'm rendered !`)
 	const options: EChartsOption = {
+		title: {
+			text: 'Referer of a Website',
+			left: 'center'
+		},
 		tooltip: {
 			trigger: 'item',
 			formatter: `{b}: $\{c} ({d}%)`
@@ -20,31 +23,33 @@ export const Charts: React.FC = () => {
 		series: [
 			{
 				type: 'pie',
-				radius: ['55%', '95%'],
-				avoidLabelOverlap: false,
-				label: {
-					show: false,
-					position: 'center'
+				radius: ['30%', '55%'],
+				avoidLabelOverlap: true,
+				itemStyle: {
+					borderRadius: 4
 				},
+				data: [
+					{value: 1048, name: 'Search Engine'},
+					{value: 735, name: 'Direct'},
+					{value: 580, name: 'Email'},
+					{value: 484, name: 'Union Ads'},
+					{value: 300, name: 'Video Ads'}
+				],
 				emphasis: {
-					label: {
-						show: true,
-						fontSize: '20',
-						fontWeight: 'bold'
+					itemStyle: {
+						shadowBlur: 20,
+						shadowOffsetX: 10,
+						shadowColor: 'rgba(0, 0, 0, 0.8)'
 					}
 				},
 				labelLine: {
 					show: false
-				},
-				data: [
-					{value: 1048, name: '搜索引擎'},
-					{value: 735, name: '直接访问'},
-					{value: 580, name: '邮件营销'},
-					{value: 484, name: '联盟广告'},
-					{value: 300, name: '视频广告'}
-				]
+				}
 			}
 		]
 	};
+
 	return <ReactECharts option={options}/>;
 }
+
+// update
