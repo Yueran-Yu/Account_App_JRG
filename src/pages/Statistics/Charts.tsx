@@ -52,4 +52,3 @@ export const Charts: React.FC = () => {
 	return <ReactECharts option={options}/>;
 }
 
-// update
