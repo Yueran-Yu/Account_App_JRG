@@ -52,3 +52,4 @@ export const Charts: React.FC = () => {
 	return <ReactECharts option={options}/>;
 }
 
+// reading article, last 5 days of work, has been resigned on 2021/09/23
