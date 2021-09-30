@@ -55,3 +55,4 @@ export const Charts: React.FC = () => {
 // reading article, last 5 days of work, has been resigned on 2021/09/23
 //reading 学习脑科学 finished
 // reading <医学通识>
+// start reading <把时间当做朋友>
