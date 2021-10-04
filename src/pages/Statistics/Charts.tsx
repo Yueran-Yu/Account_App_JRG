@@ -57,3 +57,4 @@ export const Charts: React.FC = () => {
 // reading <医学通识>
 // start reading <把时间当做朋友>
 // last day of CSR work
+// new start, make plan of learning 2021/10/03
